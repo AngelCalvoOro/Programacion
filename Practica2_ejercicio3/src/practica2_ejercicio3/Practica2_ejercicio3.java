@@ -20,17 +20,27 @@ public class Practica2_ejercicio3 {
      */
     public static void main(String[] args) {
         String frase = JOptionPane.showInputDialog(null,"Intruduce una frase");
-        String caracter_contar = JOptionPane.showInputDialog(null,"Intruduce el caracter que se contara de la frase");
-        contadorCaracter(frase, caracter_contar);
+        //el .charAt(0) indicara que coga la primera posicion del valor indicado.
+        char caracter_contar = JOptionPane.showInputDialog(null,"Intruduce el caracter que se contara de la frase").charAt(0);
+        int contadorCaracter = contadorCaracter(frase, caracter_contar);
+        JOptionPane.showMessageDialog(null,"En la frase (" + frase + ") hay " + contadorCaracter +" " + caracter_contar);
     }
-    public static void contadorCaracter(String frase, String contadorCaracter){
+    public static int contadorCaracter(String frase, char contadorCaracter){
         int contador = 0;
+        //frase.length() enumera la cadena de caracteres de el String frase.
+        //en el for el legth se transforma en el numero total de caracteres ejemplo "hola" en valor sera 3 hsiendo 0 y a siendo 3.
         for(int x= 0; x < frase.length(); x++){
-            if(caracter_contar == frase.charAt(x)){
+            /*
+            que realizara ejemplo
+            frase = hola
+            frase.legth = h= 0 |o= 1|l=2 |a=3 |
+            if = hace que si 
+            */
+            if(frase.charAt(x) == contadorCaracter){
                 contador = contador + 1;
             }
-        }
-        JOptionPane.showMessageDialog(null,"En la frase el caracter indicado esta puesto " + contador + " veces.");
+        }  
+        return contador;
     }
     
 }
