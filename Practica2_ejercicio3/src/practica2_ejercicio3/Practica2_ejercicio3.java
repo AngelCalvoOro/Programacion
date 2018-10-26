@@ -34,7 +34,8 @@ public class Practica2_ejercicio3 {
             que realizara ejemplo
             frase = hola
             frase.legth = h= 0 |o= 1|l=2 |a=3 |
-            if = hace que si 
+            if = hace que mire cada letra y si la letra esta es igual a la letra que queremos cuma contador
+            Cada letra se representa con valor numerico con el .charAt
             */
             if(frase.charAt(x) == contadorCaracter){
                 contador = contador + 1;
