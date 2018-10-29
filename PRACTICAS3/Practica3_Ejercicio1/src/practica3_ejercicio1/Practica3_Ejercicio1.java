@@ -5,6 +5,7 @@
  */
 package practica3_ejercicio1;
 
+import java.nio.charset.Charset;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,19 +28,49 @@ public class Practica3_Ejercicio1 {
     El estado civil puede ser S de soltero, C de casado, V de viudo y D de
     divorciado (S C V D ).
     
-    El nivel de estudios puede ser P de primario, M de medo y S de
+    El nivel de estudios puede ser P de primario, M de medio y S de
     superior (P M S).
     
     Llevan el plus de 100 euros las siguientes combinaciones: SP VS SM
     CS VP SS DS.
     */
     public static void main(String[] args) {
-       int numHoras = Integer.parseInt(JOptionPane.showInputDialog(null,"Escribe el numero de horas trabajadas"));
-       int pagoBase = numHoras * 10;
+        int pagoFinal;
+        
+        int numHoras = Integer.parseInt(JOptionPane.showInputDialog(null,"Escribe el numero de horas trabajadas"));
+        String estadoCivil = JOptionPane.showInputDialog(null,"Indique su estado civil.(soltero/casado/viudo/divorciado)");
+        String nivelEstudios = JOptionPane.showInputDialog(null,"Indique su nivel de estudios.(primario/medio/superior)");
+        int pagoBase = numHoras * 10;
         if (numHoras > 40) {
-            int horasExtra = numHoras - 40;
-            
+            int horasExtra = (numHoras - 40) * 15;
+            int pagoBaseExtra = pagoBase + horasExtra;
+            pagoFinal = pagoBaseExtra;
         }
+        else{
+            pagoFinal = pagoBase;
+        }
+        if (estadoCivil == "soltero" && nivelEstudios == "primario") {
+            pagoFinal = pagoFinal + 100;
+        }
+        if (estadoCivil == "soltero" && nivelEstudios == "medio") {
+            pagoFinal = pagoFinal + 100;
+        }
+        if (estadoCivil == "soltero" && nivelEstudios == "superior") {
+            pagoFinal = pagoFinal + 100;
+        }
+        if (estadoCivil == "casado" && nivelEstudios == "superior") {
+            pagoFinal = pagoFinal + 100;
+        }
+        if (estadoCivil == "viudo" && nivelEstudios == "superior") {
+            pagoFinal = pagoFinal + 100;
+        }
+        if (estadoCivil == "viudo" && nivelEstudios == "primario") {
+            pagoFinal = pagoFinal + 100;
+        }
+        if (estadoCivil == "divorciado" && nivelEstudios == "superior") {
+            pagoFinal = pagoFinal + 100;
+        }
+        JOptionPane.showMessageDialog(null,pagoFinal + " Es el sueldo acorde a lo indico usted.");
     }
     
 }
