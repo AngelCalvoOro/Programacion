@@ -23,6 +23,9 @@ public class EjemploTryCatchFinally {
         */
         try{
             int n = Integer.parseInt(JOptionPane.showInputDialog(null,"Teclea un numero"));
+            if (n == 0 || n == 10) {
+                throw new numeroValidoException();
+            }
             JOptionPane.showMessageDialog(null,"el numero es " + n);
             int a = n / 0;
         }
@@ -39,6 +42,12 @@ public class EjemploTryCatchFinally {
             JOptionPane.showMessageDialog(null,"ya te vale en la programacion algo que esta no existe");
         }
         /*
+        este catch es una clase creada por mi la cual saltara si en numero es 0 o 10
+        */
+        catch(numeroValidoException e){
+            JOptionPane.showMessageDialog(null,"ya te vale el numero no puede ser ni 0 ni 10");
+        }
+        /*
         el catch(Exception ) se ejecuta si en el try ocurre cualquier error
         */
        catch(Exception e){
@@ -51,5 +60,4 @@ public class EjemploTryCatchFinally {
             JOptionPane.showMessageDialog(null,"se acabo");
         }
     }
-    
 }
