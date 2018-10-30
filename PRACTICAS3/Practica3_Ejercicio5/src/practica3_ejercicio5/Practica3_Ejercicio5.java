@@ -20,7 +20,7 @@ public class Practica3_Ejercicio5 {
     (charAt(posicion))
     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
     
 }

@@ -24,7 +24,7 @@ public class Practica3_Ejercicio4 {
     de alumnos.
     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
     
 }

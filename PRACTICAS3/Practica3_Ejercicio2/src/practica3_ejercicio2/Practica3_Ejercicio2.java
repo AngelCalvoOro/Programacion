@@ -5,6 +5,8 @@
  */
 package practica3_ejercicio2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 1gdaw06
@@ -32,7 +34,103 @@ public class Practica3_Ejercicio2 {
     recibiendo por teclado el apto o no apto en cada uno de los lenguajes.
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        boolean bien = false;
+        String VN = null;
+        String Covol = null;
+        String Java = null;
+        String SQL = null;
+        do
+        {
+            try
+            {
+                VN = JOptionPane.showInputDialog("¿Es apto o no en Visual.Net?");
+                if (!VN.equals("apto") && !VN.equals("no apto")) 
+                {
+                    throw new valorException();
+                }
+                bien = true;
+            }
+            catch(valorException e)
+            {
+                JOptionPane.showMessageDialog(null,"Pon solo si es apto o no apto");
+                bien = false;
+            }
+        }
+        while(bien == false);
+        do
+        {
+            try
+            {
+                Covol = JOptionPane.showInputDialog("¿Es apto o no en Covol?");
+                if (!VN.equals("apto") && !VN.equals("no apto"))
+                {
+                    throw new valorException();
+                }
+                bien = true;
+            }
+            catch(valorException e)
+            {
+                JOptionPane.showMessageDialog(null,"Pon solo si es apto o no apto");
+                bien = false;
+            }
+        }
+        while(bien == false);
+        do
+        {
+            try
+            {
+                Java = JOptionPane.showInputDialog("¿Es apto o no en Java?");
+                if (!VN.equals("apto") && !VN.equals("no apto"))
+                {
+                    throw new valorException();
+                }
+                bien = true;
+            }
+            catch(valorException e)
+            {
+                JOptionPane.showMessageDialog(null,"Pon solo si es apto o no apto");
+                bien = false;
+            }
+
+        }
+        while(bien == false);
+        do
+        {
+            try
+            {
+                SQL = JOptionPane.showInputDialog("¿Es apto o no en SQL?");
+                if (!VN.equals("apto") && !VN.equals("no apto"))
+                    {
+                        throw new valorException();
+                    }
+                    bien = true;
+            }
+            catch(valorException e)
+            {
+                JOptionPane.showMessageDialog(null,"Pon solo si es apto o no apto");
+                bien = false;
+            }
+        
+        }
+        while(bien == false);
+        if (VN.equals("apto") && Covol.equals("apto") && Java.equals("apto") && SQL.equals("apto"))
+        {
+            JOptionPane.showMessageDialog(null,"Este alumno tiene un SOBRESALIENTE");
+        }
+        else if (Covol.equals("apto") && SQL.equals("apto") && (VN.equals("apto") || Java.equals("apto")))
+        {
+            JOptionPane.showMessageDialog(null,"Este alumno tiene un NOTABLE");
+        }
+        else if (Covol.equals("apto") && SQL.equals("apto"))
+        {
+            JOptionPane.showMessageDialog(null,"Este alumno tiene un BIEN");
+        }
+        else if ((Covol.equals("apto") || SQL.equals("apto")) && (VN.equals("apto") || Java.equals("apto")))
+        {
+            JOptionPane.showMessageDialog(null,"Este alumno tiene un SUFICIENTE");
+        }
+        else{
+           JOptionPane.showMessageDialog(null,"Este alumno ES UN INUTIL Y POR ESO TIENE UN INSUFICIENTE");
+        }
     }
-    
 }

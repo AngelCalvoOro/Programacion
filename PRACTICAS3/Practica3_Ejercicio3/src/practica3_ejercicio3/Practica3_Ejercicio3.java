@@ -26,7 +26,7 @@ public class Practica3_Ejercicio3 {
     la opcion de salir.
     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
     
 }

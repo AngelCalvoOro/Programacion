@@ -35,11 +35,12 @@ public class Practica3_Ejercicio1 {
     CS VP SS DS.
     */
     public static void main(String[] args) {
+        try{
         int pagoFinal;
         
-        int numHoras = Integer.parseInt(JOptionPane.showInputDialog(null,"Escribe el numero de horas trabajadas"));
-        String estadoCivil = JOptionPane.showInputDialog(null,"Indique su estado civil.(soltero/casado/viudo/divorciado)");
-        String nivelEstudios = JOptionPane.showInputDialog(null,"Indique su nivel de estudios.(primario/medio/superior)");
+        int numHoras = Integer.parseInt(JOptionPane.showInputDialog("Escribe el numero de horas trabajadas"));
+        String estadoCivil = JOptionPane.showInputDialog("Indique su estado civil.(soltero/casado/viudo/divorciado)");
+        String nivelEstudios = JOptionPane.showInputDialog("Indique su nivel de estudios.(primario/medio/superior)");
         int pagoBase = numHoras * 10;
         if (numHoras > 40) {
             int horasExtra = (numHoras - 40) * 15;
@@ -49,28 +50,22 @@ public class Practica3_Ejercicio1 {
         else{
             pagoFinal = pagoBase;
         }
-        if (estadoCivil == "soltero" && nivelEstudios == "primario") {
+        if (estadoCivil.equals("soltero")) {
             pagoFinal = pagoFinal + 100;
         }
-        if (estadoCivil == "soltero" && nivelEstudios == "medio") {
+        else if (nivelEstudios.equals("superior")) {
             pagoFinal = pagoFinal + 100;
         }
-        if (estadoCivil == "soltero" && nivelEstudios == "superior") {
-            pagoFinal = pagoFinal + 100;
-        }
-        if (estadoCivil == "casado" && nivelEstudios == "superior") {
-            pagoFinal = pagoFinal + 100;
-        }
-        if (estadoCivil == "viudo" && nivelEstudios == "superior") {
-            pagoFinal = pagoFinal + 100;
-        }
-        if (estadoCivil == "viudo" && nivelEstudios == "primario") {
-            pagoFinal = pagoFinal + 100;
-        }
-        if (estadoCivil == "divorciado" && nivelEstudios == "superior") {
+        else if (estadoCivil.equals("viudo") && nivelEstudios.equals("primario")) {
             pagoFinal = pagoFinal + 100;
         }
         JOptionPane.showMessageDialog(null,pagoFinal + " Es el sueldo acorde a lo indico usted.");
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null," En la programacion hay algo mal");
+
+        }
+        
     }
     
 }
