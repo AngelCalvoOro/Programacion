@@ -12,9 +12,9 @@ package practica3_ejercicio4;
 public class Practica3_Ejercicio4 {
 
     /**
-    Desarrolla una programa en el que el usuario nos proporcione el
+    Desarrolla un programa en el que el usuario nos proporcione el
     nombre de los alumnos de un curso y sus notas en seis asignaturas
-    distintas. El programa terminar´a cuando como nombre nos tecleen la
+    distintas. El programa terminara cuando en el como nombre nos tecleen la
     palabra FIN.
      
     Nuestro programa debe visualizar el nombre de cada uno de los alumnos
