@@ -7,8 +7,9 @@ package practica3_ejercicio5;
 
 /**
  *
- * @author Angel
+ * @author 1gdaw06
  */
-class LongitudNoValida extends Exception{
+public class LongitudNoValida extends Exception{
     
 }
+
