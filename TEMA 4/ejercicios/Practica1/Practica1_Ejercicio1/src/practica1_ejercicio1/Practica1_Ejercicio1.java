@@ -20,12 +20,18 @@ public class Practica1_Ejercicio1 {
     almacenados se visualizara el valor maximo y el mınimo.
     */
     public static void main(String[] args) {
+        //creacion del array con 10 espacios para diferentes datos marcados desde el 0 al 9.
         int[] numeros = new int[10];
-        for (int i = 0; i < 10; i++) {
-            numeros[i] = Integer.parseInt(JOptionPane.showInputDialog("añade valores numericos 10 veces"));
+        
+        //usamos el .length para indicar el maximo del array indicado previamente.
+        for (int i = 0; i < numeros.length; i++)
+        {
+            numeros[i] = Integer.parseInt(JOptionPane.showInputDialog("Añade el "+ (i+1) + "º valor numericos."));
         }
+        
+        //este Array.sort coge los valores numericos y los ordena poniendo en el 0 el valor mas pequeño y en el 9 el mas grande.
         Arrays.sort(numeros);
-        JOptionPane.showMessageDialog(null,"El numero mas pequeño es " + numeros[0] + " y es mayor es " + numeros[9]);
+        JOptionPane.showMessageDialog(null,"El numero mas pequeño es " + numeros[0] + " y el mayor es " + numeros[9]);
     }
     
 }
