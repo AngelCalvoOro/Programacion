@@ -19,6 +19,10 @@ public class Practica1_Ejercicio2 {
     tecleado es correcto o no.
     */
     public static void main(String[] args) {
+        /*
+        otra manera de hacer este array 
+        String[] listaMes = {"enero","febrero","marzo","abril","mayo","junio","julio","agosto","semtiembre","octubre","noviembre","diciembre"};
+        */
         String[] listaMes = new String[12];
         listaMes[0] = "enero";
         listaMes[1] = "febrero";
@@ -39,7 +43,7 @@ public class Practica1_Ejercicio2 {
                 System.exit(0);
             }
         }
-        JOptionPane.showMessageDialog(null,"El mensaje es incorrecto");
+        JOptionPane.showMessageDialog(null,"Lo escrito no es uno de los 12 meses.");
         
         /*int respuesta;
         
