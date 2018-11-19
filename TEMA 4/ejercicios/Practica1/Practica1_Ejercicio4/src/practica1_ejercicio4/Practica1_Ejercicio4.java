@@ -17,7 +17,7 @@ public class Practica1_Ejercicio4 {
     a continuacion imprima el resultado.
     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
     
 }

@@ -18,7 +18,12 @@ public class Practica1_Ejercicio5 {
     devolver el mınimo numero de billetes y/o monedas.
     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        float[] valorMoneda = new float[15];
+        arrayMonedas(valorMoneda);
+    }
+
+    private static void arrayMonedas(float[] valorMoneda) {
+        //{"500","200","100","50","20","10","5","2","1","0.50","0.20","0.10","0.05","0.02","0.01"};
     }
     
 }

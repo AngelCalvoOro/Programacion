@@ -24,13 +24,14 @@ public class Practica1_Ejercicio3 {
         boolean respuesta = false;
         String pregunta = null;
         double litros;
+        double litroMes = 0;
         String[] listaMes = {"enero","febrero","marzo","abril","mayo","junio","julio","agosto","semtiembre","octubre","noviembre","diciembre"};
         for (int x = 0; x < listaMes.length; x++) {
             do
             {
                 try
                 {
-                    pregunta = JOptionPane.showInputDialog("Ha llovido en " + listaMes[x]);
+                    pregunta = JOptionPane.showInputDialog("Ha llovido en " + listaMes[x] + "? " + "\n\n" + "Si has terminado escribe FIN ");
                     if (!pregunta.equalsIgnoreCase("si") && !pregunta.equalsIgnoreCase("no")) {
                         throw new diferenteException();
                     }
@@ -38,23 +39,27 @@ public class Practica1_Ejercicio3 {
                 }
                 catch(diferenteException e)
                 {
-                    JOptionPane.showMessageDialog(null,"RESPONDE SOLO CON (SI) O (NO)");
+                    JOptionPane.showMessageDialog(null,"RESPONDE SOLO CON (SI), (NO)");
                     respuesta = false;
                 }
             }while(respuesta == false);
             
             if (pregunta.equalsIgnoreCase("si")) 
             {
-               int cantidadDias = Integer.parseInt(JOptionPane.showInputDialog("Cuantos dias a llovido a llovido en " + listaMes[x]));
+               int cantidadDias = Integer.parseInt(JOptionPane.showInputDialog("Cuantos dias a llovido en " + listaMes[x]));
                String[] listaDias = new String[cantidadDias];
                 for (int i = 0; i < listaDias.length; i++) {
-                    
+                    litros = Integer.parseInt(JOptionPane.showInputDialog("¿Cuanto llovio el " + (i+1) + "º dia?"));
+                    litroMes = litroMes + litros;
                 }
+                
             }
             else
             {
                 litros = 0;
             }
+            
+            
         }
     }
     
