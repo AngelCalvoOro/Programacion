@@ -59,7 +59,7 @@ public class Practica1_Ejercicio3 {
                 litros = 0;
             }
             
-            
+            //EMPEZAR DE NUEVO PARA HACERLO MEJOR
         }
     }
     
