@@ -24,7 +24,9 @@ public class Practica1_Ejercicio3 {
         boolean respuesta = false;
         String pregunta = null;
         double litros;
-        double litroMes = 0;
+        double litrosMes = 0;
+        float[] litrosMeses = new float[12];
+        
         String[] listaMes = {"enero","febrero","marzo","abril","mayo","junio","julio","agosto","semtiembre","octubre","noviembre","diciembre"};
         for (int x = 0; x < listaMes.length; x++) {
             do
@@ -43,33 +45,31 @@ public class Practica1_Ejercicio3 {
                     respuesta = false;
                 }
             }while(respuesta == false);
-            
-            if (pregunta.equalsIgnoreCase("si") || x == 12) 
+            litrosMeses[x] = 0;
+            if (pregunta.equalsIgnoreCase("si")) 
             {
                int cantidadDias = Integer.parseInt(JOptionPane.showInputDialog("Cuantos dias a llovido en " + listaMes[x]));
-               String[] listaDias = new String[cantidadDias];
-                for (int i = 0; i < listaDias.length; i++) {
+                for (int i = 0; i < cantidadDias; i++) {
                     litros = Integer.parseInt(JOptionPane.showInputDialog("¿Cuanto llovio el " + (i+1) + "º dia?"));
-                    litroMes = litroMes + litros;
+                    litrosMes = litrosMes + litros;
+                    litrosMeses[x] =  (float) litros;
                 }
                 
             }
             else if (pregunta.equalsIgnoreCase("no"))
             {
-                litroMes = 0;
+                litrosMeses[x] = 0;
             }
-            else if (pregunta.equalsIgnoreCase("fin") || x == 12)
+            else if (pregunta.equalsIgnoreCase("fin"))
             {
-                String lista = "";
-                for (int i = 0; i < 12; i++) {
-                    lista = lista + listaMes[i+1] + " = " + litroMes + "\n";
-                }
-                JOptionPane.showMessageDialog(null, "Los litros recogidos durante los doce meses del año son: \n" + lista);
-
+                
+                x=12;
             }
-            
-            //EMPEZAR DE NUEVO PARA HACERLO MEJOR
         }
+        String lista = "";
+        for (int i = 0; i < 12; i++) {
+            lista = lista + listaMes[i] + " = " + litrosMeses[i] + "\n";
+        }
+        JOptionPane.showMessageDialog(null, "Los litros recogidos durante los doce meses del año son: \n" + lista);
     }
-    
 }
