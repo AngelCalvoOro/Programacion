@@ -32,19 +32,19 @@ public class Practica1_Ejercicio3 {
                 try
                 {
                     pregunta = JOptionPane.showInputDialog("Ha llovido en " + listaMes[x] + "? " + "\n\n" + "Si has terminado escribe FIN ");
-                    if (!pregunta.equalsIgnoreCase("si") && !pregunta.equalsIgnoreCase("no")) {
+                    if (!pregunta.equalsIgnoreCase("si") && !pregunta.equalsIgnoreCase("no") && !pregunta.equalsIgnoreCase("fin")) {
                         throw new diferenteException();
                     }
                     respuesta = true;
                 }
                 catch(diferenteException e)
                 {
-                    JOptionPane.showMessageDialog(null,"RESPONDE SOLO CON (SI), (NO)");
+                    JOptionPane.showMessageDialog(null,"RESPONDE SOLO CON (SI), (NO) o (FIN)");
                     respuesta = false;
                 }
             }while(respuesta == false);
             
-            if (pregunta.equalsIgnoreCase("si")) 
+            if (pregunta.equalsIgnoreCase("si") || x == 12) 
             {
                int cantidadDias = Integer.parseInt(JOptionPane.showInputDialog("Cuantos dias a llovido en " + listaMes[x]));
                String[] listaDias = new String[cantidadDias];
@@ -54,9 +54,18 @@ public class Practica1_Ejercicio3 {
                 }
                 
             }
-            else
+            else if (pregunta.equalsIgnoreCase("no"))
             {
-                litros = 0;
+                litroMes = 0;
+            }
+            else if (pregunta.equalsIgnoreCase("fin") || x == 12)
+            {
+                String lista = "";
+                for (int i = 0; i < 12; i++) {
+                    lista = lista + listaMes[i+1] + " = " + litroMes + "\n";
+                }
+                JOptionPane.showMessageDialog(null, "Los litros recogidos durante los doce meses del año son: \n" + lista);
+
             }
             
             //EMPEZAR DE NUEVO PARA HACERLO MEJOR
