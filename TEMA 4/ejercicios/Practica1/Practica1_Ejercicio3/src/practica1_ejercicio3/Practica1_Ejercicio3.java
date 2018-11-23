@@ -51,8 +51,8 @@ public class Practica1_Ejercicio3 {
                int cantidadDias = Integer.parseInt(JOptionPane.showInputDialog("Cuantos dias a llovido en " + listaMes[x]));
                 for (int i = 0; i < cantidadDias; i++) {
                     litros = Integer.parseInt(JOptionPane.showInputDialog("¿Cuanto llovio el " + (i+1) + "º dia?"));
-                    litrosMes = litrosMes + litros;
-                    litrosMeses[x] =  (float) litros;
+                    litrosMes= litrosMes + litros;
+                    litrosMeses[x] =  (float) litrosMes;
                 }
                 
             }

@@ -16,7 +16,7 @@ public class Practica1_Ejercicio7 {
     el numero de unidades que se venden de los distintos productos con
     los que trabaja una empresa.
     
-    Esta empresa trabaja con diez productos distintos cuyos c´odigos son:
+    Esta empresa trabaja con diez productos distintos cuyos codigos son:
     10, 23, 30, 47, 55, 65,135,256, 526, 663. El usuario cada vez que se
     hace una venta, nos proporcionara el codigo del producto (hay que
     comprobar que es valido) y el numero de unidades vendidas de ese

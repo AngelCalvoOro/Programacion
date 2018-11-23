@@ -17,9 +17,16 @@ public class Practica1_Ejercicio6 {
     el total de faltas de cada alumno. Se teclearan los partes diarios
     introduciendo la fecha, el codigo del alumno y el numero de faltas de
     ese dıa.
+    Cada vez que el usuario nos introduzca datos, le preguntaremos si
+    desea continuar.
+    Supondremos a efectos practicos un maximo de 5 alumnos en clase.
+    Cogeremos los 5 primeros codigos distintos que introduzcan como
+    correctos, no admitiremos ninguno mas.
     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        String[] codigoAlumnos;
+        boolean pregunta = true;
+        
     }
     
 }
