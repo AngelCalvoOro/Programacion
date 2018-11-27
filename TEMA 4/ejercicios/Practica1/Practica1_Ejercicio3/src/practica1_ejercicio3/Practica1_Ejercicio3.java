@@ -62,7 +62,7 @@ public class Practica1_Ejercicio3 {
             }
             else if (pregunta.equalsIgnoreCase("fin"))
             {
-                
+                //FALTA SABER COMO HACER QUE PASE DE UN VALOR FLOAT A UNO STRING
                 x=12;
             }
         }
