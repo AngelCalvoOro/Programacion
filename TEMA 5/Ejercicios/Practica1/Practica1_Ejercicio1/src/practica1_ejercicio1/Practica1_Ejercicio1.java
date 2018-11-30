@@ -37,6 +37,7 @@ public class Practica1_Ejercicio1 {
         ArrayList<Float> listaValores = new ArrayList();
         valoresArrayList(listaValores);
         // siguiente objetivo hacer menu
+        opcionesLista();//(listaMenu)
     }
 
     private static void valoresArrayList(ArrayList<Float> listaValores){
@@ -48,5 +49,11 @@ public class Practica1_Ejercicio1 {
             respuesta = JOptionPane.showConfirmDialog(null, "¿Quieres añadir mas valores?");
         } while (respuesta == 0);
     }
+
+    private static void opcionesLista() {
+        String lista=" ";
+        
+    }
+    
     
 }
