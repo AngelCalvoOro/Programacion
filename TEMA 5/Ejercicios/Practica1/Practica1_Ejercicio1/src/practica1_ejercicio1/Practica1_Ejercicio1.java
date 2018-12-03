@@ -158,27 +158,45 @@ public class Practica1_Ejercicio1 {
     }
 
     private static void caso4(ArrayList<Float> listaValores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // no entiendo las diferencias ni nada respecto a este apartado
+        
     }
 
     private static void caso5(ArrayList<Float> listaValores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JOptionPane.showMessageDialog(null,"SI NO HAY VALORES NO APARECERA NADA \n"+listaValores);
+        //esta igual porque al inicio se obliga añadir minimo 1 valor
     }
 
     private static void caso6(ArrayList<Float> listaValores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JOptionPane.showMessageDialog(null,"SON LOS VALORES DEL PRINCIPIO \n\n"+listaValores);
+        valoresArrayList(listaValores);
+        JOptionPane.showMessageDialog(null,"SON LOS VALORES DEL PRINCIPIO + LOS NUEVOS AÑADIDOS \n\n"+listaValores);
+        //La unica pega en esto es que cuando vas a añadir un valor nuevo te dice añade el valor 1 en vez de la posicion del valor nuevo
     }
 
     private static void caso7(ArrayList<Float> listaValores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        float valorNuevo = Float.parseFloat(JOptionPane.showInputDialog("Introduce el nuevo valor a añadir."));
+        int indicePosicion = Integer.parseInt(JOptionPane.showInputDialog("Introduce la posicion donde quieres añadir el valor"));
+        listaValores.add(indicePosicion,valorNuevo);
+        JOptionPane.showMessageDialog(null,"lista de valores mas el valor añadido \n"+listaValores+"\n"+"El valor "+valorNuevo+ " esta en la posicion "+indicePosicion+"º");
     }
 
     private static void caso8(ArrayList<Float> listaValores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int indicePosicion = Integer.parseInt(JOptionPane.showInputDialog("indica la posicion que quieres eliminar de la siguiente lista \n"+listaValores));
+        listaValores.remove(indicePosicion);
+        JOptionPane.showMessageDialog(null,"lista de valores menos el valor de la posicion indicada \n"+listaValores);
     }
 
     private static void caso9(ArrayList<Float> listaValores) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //falla
+        float sumaTotal = 0;
+        float media = 0;
+        for (int x = 0; x < listaValores.get((listaValores.size())); x++) {
+            sumaTotal += listaValores.get(x);
+            media = sumaTotal / listaValores.get((listaValores.size())) ;
+            
+        }
+        JOptionPane.showMessageDialog(null,"La media de todos los valores puestos es: " + media);
     }
 
 }
