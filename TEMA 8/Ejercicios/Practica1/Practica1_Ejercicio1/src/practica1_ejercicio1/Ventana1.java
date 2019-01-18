@@ -1,13 +1,22 @@
 
 package practica1_ejercicio1;
 
-import static practica1_ejercicio1.Practica1_Ejercicio1.salir;
-
+import javax.swing.JOptionPane;
 
 public class Ventana1 extends javax.swing.JFrame {
-   
+    
+    private Integer aciertos;
+    private Integer fallos;
+    private Integer intentos;
+    
     public Ventana1() {
         initComponents();
+        //centrar ventana1
+        setLocationRelativeTo(null);
+        //contadores
+        aciertos = 0;
+        fallos = 0;
+        intentos = 0;
     }
 
     @SuppressWarnings("unchecked")
@@ -25,7 +34,7 @@ public class Ventana1 extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         tfaciertos = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        tffallas = new javax.swing.JTextField();
+        tffallos = new javax.swing.JTextField();
         jbactivar = new javax.swing.JButton();
         jbcomprobar = new javax.swing.JButton();
         jbsalir = new javax.swing.JButton();
@@ -54,8 +63,8 @@ public class Ventana1 extends javax.swing.JFrame {
 
         jLabel6.setText("Fallas:");
 
-        tffallas.setText("0");
-        tffallas.setEnabled(false);
+        tffallos.setText("0");
+        tffallos.setEnabled(false);
 
         jbactivar.setText("Activar");
         jbactivar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -65,6 +74,11 @@ public class Ventana1 extends javax.swing.JFrame {
         });
 
         jbcomprobar.setText("Comprobar");
+        jbcomprobar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbcomprobarMouseClicked(evt);
+            }
+        });
 
         jbsalir.setText("Salir");
         jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,7 +128,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tffallas, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tffallos, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jbsalir))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -136,7 +150,7 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(tfaciertos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(tffallas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tffallos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbactivar)
@@ -149,18 +163,62 @@ public class Ventana1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseClicked
-        /*
-        Hacer clic sobre el boton Salir:
-        Ira al void salir de Practica1_Ejercicio1 y ejecutara el cierre del programa.
-        */
-        salir();
+        //Hacer clic sobre Salir:
+        //Vuelve a main y va al evento salir
+        Practica1_Ejercicio1.salir();
     }//GEN-LAST:event_jbsalirMouseClicked
 
     private void jbactivarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbactivarMouseClicked
         //Hacer clic sobre el boton Activar:
-        /*AQUI TENEMOS QUE HACER QUE EN tfnumero1 Y tfnumero2 SE PONGA UN NUMERO ALEATORIO
-        */
+        //Hace dos numeros aleatorios diferentes y los pone en los tfnumero1 y 2
+        Integer numRandom = (int) (Math.random()* 998) +1;
+        tfnumero1.setText(numRandom.toString());
+        numRandom = (int) (Math.random()* 998) +1;
+        tfnumero2.setText(numRandom.toString());
     }//GEN-LAST:event_jbactivarMouseClicked
+
+    private void jbcomprobarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbcomprobarMouseClicked
+        //Hacer clic sobre Comprobar:
+        //Comprueba si hay algun numero aleatorio y en tfresultado
+        try{
+            if (tfnumero1.getText().isEmpty()) {
+                throw new Sincomprobar();
+            }
+            Integer sumaNumeros = Integer.parseInt(tfnumero1.getText()) + Integer.parseInt(tfnumero2.getText());
+            if (tfresultado.getText().isEmpty()){
+                throw new ResultadoVacio();
+            }
+            else{
+                intentos++;
+                tfintentos.setText(intentos.toString());
+                if (sumaNumeros == Integer.parseInt(tfresultado.getText())) {
+                    aciertos ++;
+                    tfaciertos.setText(aciertos.toString());
+                    tfnumero1.setText("");
+                    tfnumero2.setText("");
+                }
+                else{
+                    fallos++;
+                    tffallos.setText(fallos.toString());
+                }
+ 
+            }
+        }
+        catch(Sincomprobar e){
+            JOptionPane.showMessageDialog(this, "PULSA PRIMERO EL BOTON COMPROBAR");
+        }
+        catch(ResultadoVacio e)
+        {
+            JOptionPane.showMessageDialog(this, "PON UN RESULTADO PRIMERO");
+        }
+        catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(this,"Solo valido datos numericos");
+        }
+        //Suma los tfnumero1 y 2 y lo compara con el numero puesto en tfresultado
+        
+        
+    }//GEN-LAST:event_jbcomprobarMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -205,7 +263,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JButton jbcomprobar;
     private javax.swing.JButton jbsalir;
     private javax.swing.JTextField tfaciertos;
-    private javax.swing.JTextField tffallas;
+    private javax.swing.JTextField tffallos;
     private javax.swing.JTextField tfintentos;
     private javax.swing.JTextField tfnumero1;
     private javax.swing.JTextField tfnumero2;
