@@ -1,9 +1,13 @@
 package Ventana;
 
+import practica1_ejercicio2.Practica1_Ejercicio2;
+
 public class Ventana_Alta extends javax.swing.JFrame {
 
     public Ventana_Alta() {
         initComponents();
+        //centrar ventana
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -40,16 +44,9 @@ public class Ventana_Alta extends javax.swing.JFrame {
         });
 
         jbsalir.setText("Salir");
-
-        tfapellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfapellidoActionPerformed(evt);
-            }
-        });
-
-        tfdni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfdniActionPerformed(evt);
+        jbsalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbsalirMouseClicked(evt);
             }
         });
 
@@ -108,21 +105,15 @@ public class Ventana_Alta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfapellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfapellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfapellidoActionPerformed
-
-    private void tfdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfdniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfdniActionPerformed
-
     private void jbaceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbaceptarMouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jbaceptarMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jbsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbsalirMouseClicked
+        Practica1_Ejercicio2.salir();
+    }//GEN-LAST:event_jbsalirMouseClicked
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
