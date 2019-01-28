@@ -5,7 +5,6 @@ public class Productos {
    private String nombre;
    private int unidades;
    private float precio;
-   private String nombreProveedor;/*sin terminar*/
 
     public Productos(String nombre, int unidades, float precio) {
         this.nombre = nombre;

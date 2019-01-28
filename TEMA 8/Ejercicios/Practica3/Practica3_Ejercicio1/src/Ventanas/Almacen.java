@@ -6,6 +6,7 @@
 
 package Ventanas;
 
+import Clases.Productos;
 import practica3_ejercicio1.Practica3_Ejercicio1;
 
 /**
@@ -77,10 +78,13 @@ public class Almacen extends javax.swing.JFrame {
             }
         });
 
+        tfUnidades.setEnabled(false);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operacion a contabilizar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 102, 255))); // NOI18N
         jPanel1.setToolTipText("");
 
         jRadioButton1.setText("Compra");
+        jRadioButton1.setEnabled(false);
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -88,6 +92,7 @@ public class Almacen extends javax.swing.JFrame {
         });
 
         jRadioButton2.setText("Venta");
+        jRadioButton2.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,6 +121,8 @@ public class Almacen extends javax.swing.JFrame {
         jLabel5.setText("Proveedor");
 
         jLabel6.setText("Importe de la compra:");
+
+        tfpreciocompra.setEnabled(false);
 
         cbproveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +190,7 @@ public class Almacen extends javax.swing.JFrame {
 
         jLabel8.setText("Cliente");
 
+        tfcliente.setEnabled(false);
         tfcliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfclienteActionPerformed(evt);
@@ -192,8 +200,10 @@ public class Almacen extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Descuentos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 102, 255))); // NOI18N
 
         jCheckBox1.setText("Por Volumen");
+        jCheckBox1.setEnabled(false);
 
         jCheckBox2.setText("Por pronto pago");
+        jCheckBox2.setEnabled(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -217,6 +227,7 @@ public class Almacen extends javax.swing.JFrame {
 
         jLabel9.setText("Importe de la venta:");
 
+        tfimporteventa.setEnabled(false);
         tfimporteventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfimporteventaActionPerformed(evt);
@@ -336,7 +347,8 @@ public class Almacen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfNombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreProductoActionPerformed
-        // TODO add your handling code here:
+        /*hacer que mire si encaja el nombre puesto con el nombre del array de productos*/
+        /*if (tfNombreProducto.getText() == Practica3_Ejercicio1.Productos()) {}*/
     }//GEN-LAST:event_tfNombreProductoActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed

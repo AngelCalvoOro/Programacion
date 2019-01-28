@@ -1,6 +1,6 @@
 package practica3_ejercicio1;
 
-import Clases.Productos;
+import Clases.*;
 import Ventanas.Almacen;
 import java.util.ArrayList;
 
