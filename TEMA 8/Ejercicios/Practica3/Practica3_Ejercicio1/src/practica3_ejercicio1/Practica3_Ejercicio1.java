@@ -3,6 +3,7 @@ package practica3_ejercicio1;
 import Clases.*;
 import Ventanas.Almacen;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Practica3_Ejercicio1 {
     private static ArrayList<Productos> listaProductos;
@@ -23,14 +24,21 @@ public class Practica3_Ejercicio1 {
         listaProductos = new ArrayList<Productos>();
         p = new Productos ("Producto1",10,3.5f);
         listaProductos.add(p);
-        p = new Productos ("Producto",45,1.7f);
+        p = new Productos ("Producto2",45,1.7f);
         listaProductos.add(p);
-        p = new Productos ("Producto",64,5.5f);
+        p = new Productos ("Producto3",64,5.5f);
         listaProductos.add(p);
-        p = new Productos ("Producto",32,3.4f);
+        p = new Productos ("Producto4",32,3.4f);
         listaProductos.add(p);
-        p = new Productos ("Producto",12,7.8f);
-        listaProductos.add(p);
+        p = new Productos ("Producto5",12,7.8f);
     }
-    
+    public static boolean validarProducto(String producto){
+        boolean respuestaProducto = true;
+        for (int x = 0; x < listaProductos.size(); x++) {
+            if (producto == listaProductos.get(x).getNombre()) {
+                respuestaProducto = true;
+            }else respuestaProducto = false;
+        }
+        return respuestaProducto;
+    }
 }
