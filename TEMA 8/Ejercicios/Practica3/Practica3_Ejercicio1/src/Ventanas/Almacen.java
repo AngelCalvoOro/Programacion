@@ -30,7 +30,7 @@ public class Almacen extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         tfpreciocompra = new javax.swing.JTextField();
-        cbproveedor = new javax.swing.JComboBox<>();
+        cbproveedor = new javax.swing.JComboBox<String>();
         tfimportecompra = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
