@@ -10,6 +10,8 @@ public class Inicio extends javax.swing.JFrame {
 
     public Inicio() {
         initComponents();
+        //centrar ventana
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -108,8 +110,7 @@ public class Inicio extends javax.swing.JFrame {
                 throw new ContenidoVacio();
             }
             else{
-                JOptionPane.showMessageDialog(this,"Bienvenido usuario "+ tfUsuario.getText());
-                Practica4_Ejercicio1.validarUsuario();
+                Practica4_Ejercicio1.validarUsuario(tfUsuario.getText(),String.valueOf(pfContrasena.getPassword()));
             }
         }
         catch(ContenidoVacio e){

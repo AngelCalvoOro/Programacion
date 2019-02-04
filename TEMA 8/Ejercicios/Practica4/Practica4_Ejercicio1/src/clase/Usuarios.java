@@ -2,11 +2,11 @@
 package clase;
 
 
-public class Personal {
+public class Usuarios {
     private String nombre;
     private String contrasena;
 
-    public Personal(String nombre, String contrasena) {
+    public Usuarios(String nombre, String contrasena) {
         this.nombre = nombre;
         this.contrasena = contrasena;
     }
