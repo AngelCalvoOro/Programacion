@@ -10,7 +10,7 @@ public class Practica4_Ejercicio1 {
     private static Inicio vI;
     private static VentanaPrincipal vP;
     private static Formulario vF;
-    private static ArrayList<Usuarios> listaPersonal;
+    private static ArrayList<Usuarios> listaUsuarios;
     public static void main(String[] args) {
         //creacion de base de datos
         generarPersonal();
@@ -20,11 +20,11 @@ public class Practica4_Ejercicio1 {
     }
     private static void generarPersonal(){
         //creacion de lista Array personal y sus datos
-        listaPersonal = new ArrayList<Usuarios>();
+        listaUsuarios = new ArrayList<Usuarios>();
         
-        listaPersonal.add(new Usuarios ("usuario1","11111"));
-        listaPersonal.add(new Usuarios ("usuario2","22222"));
-        listaPersonal.add(new Usuarios ("usuario3","33333"));
+        listaUsuarios.add(new Usuarios ("usuario1","11111"));
+        listaUsuarios.add(new Usuarios ("usuario2","22222"));
+        listaUsuarios.add(new Usuarios ("usuario3","33333"));
         
         //crear lista inventada de departamentos y contratos
     }
@@ -33,23 +33,25 @@ public class Practica4_Ejercicio1 {
         System.exit(0);
     }
 
-    public static void validarUsuario(String nombre, String contrasena) {
-        int x= 0;
-        for (x = 0; x < listaPersonal.size(); x++) {
-            Usuarios p =listaPersonal.get(x);
-
-            if(p.getNombre().equals(nombre) && p.getContrasena().equals(contrasena)){
-                JOptionPane.showMessageDialog(null,"Bienvenido "+ nombre);
+    public static int validarUsuario(String nombre, String contrasena, int contador) {
+        int x;
+        for (x = 0; x < listaUsuarios.size() && (listaUsuarios.get(x).getNombre().equals(nombre) && listaUsuarios.get(x).getContrasena().equals(contrasena)); x++) {}
+        if (listaUsuarios.size() == x) {
+            contador++;
+            if (contador>3) {
+                JOptionPane.showMessageDialog(null, "HAS SUPERADO EL LIMITE DE INTENTOS.");
+                System.exit(0);
+            }
+            JOptionPane.showMessageDialog(null, "El usuario indicado no existe");
+        }//ejecuta directamente el else
+        else{
+            JOptionPane.showMessageDialog(null,"Bienvenido "+ nombre);
                 vI.dispose();
                 vP = new VentanaPrincipal();
                 vP.setVisible(true);
-                
-                break;
-            }
         }
-        if (listaPersonal.size() == x) {
-            JOptionPane.showMessageDialog(null, "El usuario indicado no existe");
-        }
+        
+        return contador;
         
     }
 

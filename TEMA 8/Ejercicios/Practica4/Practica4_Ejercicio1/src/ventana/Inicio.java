@@ -6,7 +6,7 @@ import practica4_ejercicio1.Practica4_Ejercicio1;
 import javax.swing.JOptionPane;
 
 public class Inicio extends javax.swing.JFrame {
-
+    int contador=0;
 
     public Inicio() {
         initComponents();
@@ -105,12 +105,13 @@ public class Inicio extends javax.swing.JFrame {
 
     private void bAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bAceptarMouseClicked
         //comprueba si esa usuario o contrasena vacio y te obliga a rellenar ambos
+        
         try{
             if (tfUsuario.getText().isEmpty() || String.valueOf(pfContrasena.getPassword()).isEmpty()){
                 throw new ContenidoVacio();
             }
             else{
-                Practica4_Ejercicio1.validarUsuario(tfUsuario.getText(),String.valueOf(pfContrasena.getPassword()));
+                contador = Practica4_Ejercicio1.validarUsuario(tfUsuario.getText(),String.valueOf(pfContrasena.getPassword()),contador);
             }
         }
         catch(ContenidoVacio e){

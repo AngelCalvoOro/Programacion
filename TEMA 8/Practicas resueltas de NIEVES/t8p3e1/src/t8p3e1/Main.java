@@ -85,6 +85,7 @@ public class Main {
     }
 
     public static boolean validarNombreProducto(String producto){
+        
         int x;
         for(x = 0; x < aProductos.length && aProductos[x].getNombre().compareToIgnoreCase(producto)!= 0; x++){}
         if (x == aProductos.length)
