@@ -35,7 +35,7 @@ public class Practica4_Ejercicio1 {
 
     public static int validarUsuario(String nombre, String contrasena, int contador) {
         int x;
-        for (x = 0; x < listaUsuarios.size() && (listaUsuarios.get(x).getNombre().equals(nombre) && listaUsuarios.get(x).getContrasena().equals(contrasena)); x++) {}
+        for (x = 0; x < listaUsuarios.size() && !(listaUsuarios.get(x).getNombre().equals(nombre) && listaUsuarios.get(x).getContrasena().equals(contrasena)); x++) {}
         if (listaUsuarios.size() == x) {
             contador++;
             if (contador>3) {
@@ -43,7 +43,7 @@ public class Practica4_Ejercicio1 {
                 System.exit(0);
             }
             JOptionPane.showMessageDialog(null, "El usuario indicado no existe");
-        }//ejecuta directamente el else
+        }
         else{
             JOptionPane.showMessageDialog(null,"Bienvenido "+ nombre);
                 vI.dispose();
