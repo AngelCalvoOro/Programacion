@@ -11,8 +11,10 @@ public class Trabajador {
     private static int telefono;
     private static String sexo;
     private static String estadoCivil;
+    
     //sin terminar de añadir datos
     
     //relaciones
     //contrato y departamento
+
 }
