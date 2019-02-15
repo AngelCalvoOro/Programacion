@@ -6,6 +6,7 @@
 
 package ventana;
 
+import clase.Usuario;
 import javax.swing.JOptionPane;
 import practica4_ejercicio1.Practica4_Ejercicio1;
 
@@ -19,6 +20,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
         //centrar ventana
+        setLocationRelativeTo(null);
+    }
+    
+    public VentanaPrincipal(Usuario usuario) {
+        initComponents();
+        //centrar ventana
+        this.jLabel1.setText("Bienvenido " + usuario.getTrabajador().getNombre());
         setLocationRelativeTo(null);
     }
 

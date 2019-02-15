@@ -42,6 +42,11 @@ public class Inicio extends javax.swing.JFrame {
                 bAceptarMouseClicked(evt);
             }
         });
+        bAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAceptarActionPerformed(evt);
+            }
+        });
 
         bSalir.setText("Salir");
         bSalir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,6 +123,10 @@ public class Inicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Uno de los valores esta vacio.");
         }
     }//GEN-LAST:event_bAceptarMouseClicked
+
+    private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bAceptarActionPerformed
 
 
     public static void main(String args[]) {
