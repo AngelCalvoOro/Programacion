@@ -6,7 +6,9 @@
 package ventana;
 
 import clase.Departamento;
+import clase.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import practica4_ejercicio1.Practica4_Ejercicio1;
 
 /**
@@ -15,9 +17,6 @@ import practica4_ejercicio1.Practica4_Ejercicio1;
  */
 public class Formulario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Formulario
-     */
     public Formulario() {
         initComponents();
         //centrar ventana
@@ -29,7 +28,12 @@ public class Formulario extends javax.swing.JFrame {
             this.jComboBox1.addItem(lista.get(x).getNombre());
         }
     }
-
+    public Formulario(Trabajador N_emple){
+        initComponents();
+        this.jTextField7.setText(N_emple.getN_emple());
+        setLocationRelativeTo(null);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +53,7 @@ public class Formulario extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbcancelar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -93,10 +97,10 @@ public class Formulario extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbcancelar.setText("Cancelar");
+        jbcancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbcancelarActionPerformed(evt);
             }
         });
 
@@ -190,7 +194,7 @@ public class Formulario extends javax.swing.JFrame {
                 .addGap(74, 74, 74)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jbcancelar)
                 .addGap(79, 79, 79))
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
@@ -307,16 +311,16 @@ public class Formulario extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jbcancelar))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
+        Practica4_Ejercicio1.returnToVentanaPrincipal();
+    }//GEN-LAST:event_jbcancelarActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -402,7 +406,6 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.ButtonGroup gEstadoCivil;
     private javax.swing.ButtonGroup gSexo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -429,5 +432,8 @@ public class Formulario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JButton jbcancelar;
     // End of variables declaration//GEN-END:variables
+
+    
 }

@@ -77,7 +77,6 @@ public class Practica4_Ejercicio1 {
             JOptionPane.showMessageDialog(null, "El usuario indicado no existe");
         }
         else{
-            //JOptionPane.showMessageDialog(null,"Bienvenido "+ nombre);
                 vI.dispose();
                 vP = new VentanaPrincipal(listaUsuarios.get(x));
                 vP.setVisible(true);
@@ -90,6 +89,33 @@ public class Practica4_Ejercicio1 {
         vP.dispose();
         vF = new Formulario();
         vF.setVisible(true);
+    }
+    public static void goToFormularioModificacion() {
+         boolean confirmacion = true;
+          do{  
+            int i;
+           
+            String idEmpleado = JOptionPane.showInputDialog(null, "Indique el Nº de empleado que desea modificar.");
+            for (i = 0; i < listaTrabajadores.size() && !listaTrabajadores.get(i).getN_emple().equals(idEmpleado); i++) {}
+            if (listaTrabajadores.size() == i) {
+                JOptionPane.showMessageDialog(null, "El Nº de empleado indicado no existe");
+                confirmacion = false;
+            }
+            else{
+                confirmacion = true;
+         
+                vP.dispose();
+                vF = new Formulario(listaTrabajadores.get(i));
+                vF.setVisible(true);
+            }
+          }
+         while(confirmacion == false);
+       
+        
+    }
+    public static void returnToVentanaPrincipal(){
+        vF.dispose();
+        vP.setVisible(true);
     }
     
     public static ArrayList<Departamento> dameDepartamentos(){

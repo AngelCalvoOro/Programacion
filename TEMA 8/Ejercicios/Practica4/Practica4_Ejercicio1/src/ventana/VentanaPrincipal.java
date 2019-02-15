@@ -42,8 +42,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jmialta = new javax.swing.JMenuItem();
+        jmimodificacion = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -58,21 +58,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Personas");
 
-        jMenuItem1.setText("Alta");
-        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem1MouseClicked(evt);
-            }
-        });
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmialta.setText("Alta");
+        jmialta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmialtaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jmialta);
 
-        jMenuItem2.setText("Modificacion");
-        jMenu1.add(jMenuItem2);
+        jmimodificacion.setText("Modificacion");
+        jmimodificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmimodificacionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jmimodificacion);
 
         jMenuItem3.setText("Baja");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -131,19 +131,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
+    private void jmialtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmialtaActionPerformed
+        // formulario seccion DAR DE ALTA
         Practica4_Ejercicio1.goToFormulario();
-    }//GEN-LAST:event_jMenuItem1MouseClicked
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        Practica4_Ejercicio1.goToFormulario();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmialtaActionPerformed
 
     private void jMenuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuSalirMouseClicked
+        // finalizacion de programa en boton salir
         JOptionPane.showMessageDialog(this,"Cerrando sesion.");
         Practica4_Ejercicio1.cierreyFin();
     }//GEN-LAST:event_jMenuSalirMouseClicked
+
+    private void jmimodificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmimodificacionActionPerformed
+        // formulario seccion MODIFICACION
+        Practica4_Ejercicio1.goToFormularioModificacion();
+    }//GEN-LAST:event_jmimodificacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,13 +187,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenu jMenuSalir;
+    private javax.swing.JMenuItem jmialta;
+    private javax.swing.JMenuItem jmimodificacion;
     // End of variables declaration//GEN-END:variables
 
     public VentanaPrincipal(boolean b) {
