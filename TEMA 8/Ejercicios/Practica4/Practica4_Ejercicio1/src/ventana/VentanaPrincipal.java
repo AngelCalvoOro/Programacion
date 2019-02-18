@@ -128,7 +128,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        Practica4_Ejercicio1.darbaja();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jmialtaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmialtaActionPerformed

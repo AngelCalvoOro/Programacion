@@ -51,6 +51,8 @@ public class Practica4_Ejercicio1 {
         listaTrabajadores.add(t2);
         Trabajador t3 =new Trabajador ("1234562S","333333333","Sofia","Wololo","C/ Mar Nº55","667579421","M","C",new Date (1996,3,23),"3",d3,c4);
         listaTrabajadores.add(t3);
+        Trabajador t4 =new Trabajador ("1234566S","444444444","Prueba","Prueba","C/ prueba Nº1","667000000","M","C",new Date (1996,3,23),"4",d3,c4);
+        listaTrabajadores.add(t4);
         
         //creacion de lista Array Usuarios y sus datos
         listaUsuarios = new ArrayList<Usuario>();
@@ -111,6 +113,27 @@ public class Practica4_Ejercicio1 {
           }
          while(confirmacion == false);
        
+        
+    }
+    public static void darbaja() {
+        int i = -1;
+     String numero_emple= JOptionPane.showInputDialog(null,"Añada el numero de empleado a eliminar");
+     int confirmar = JOptionPane.showConfirmDialog(null,"¿Seguro que quiere eliminar este empleado?");
+        if (confirmar == 0) {
+            for (i = 0; i < listaTrabajadores.size() && !listaTrabajadores.get(i).getN_emple().equals(numero_emple); i++) {}
+            if (listaTrabajadores.size() == i) {
+                JOptionPane.showMessageDialog(null, "El Nº de empleado indicado no existe");
+            }
+            else{
+                //sin terminar
+                listaTrabajadores.get(i).getContrato().getListaTrabajadores().remove(i);
+                listaTrabajadores.remove(i);
+                
+            }
+        }
+        else{
+            
+        }
         
     }
     public static void returnToVentanaPrincipal(){
