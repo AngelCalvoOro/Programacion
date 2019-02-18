@@ -1,6 +1,7 @@
 
 package clase;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -14,13 +15,18 @@ public class Trabajador {
     private  String telefono;
     private  String sexo;
     private  String estadoCivil;
-    private  Date fechaAlta;
+    private  LocalDate fechaAlta;
     private  String n_emple;
 
     private Departamento departamento;
     private Contrato contrato;
 
-    public Trabajador(String dni, String nss, String nombre, String apellido, String direccion, String telefono, String sexo, String estadoCivil, Date fechaAlta, String n_emple, Departamento departamento, Contrato contrato) {
+    public Trabajador() {
+    }
+    
+    
+
+    public Trabajador(String dni, String nss, String nombre, String apellido, String direccion, String telefono, String sexo, String estadoCivil, LocalDate fechaAlta, String n_emple, Departamento departamento, Contrato contrato) {
         this.dni = dni;
         this.nss = nss;
         this.nombre = nombre;
@@ -99,11 +105,11 @@ public class Trabajador {
         this.estadoCivil = estadoCivil;
     }
 
-    public Date getFechaAlta() {
+    public LocalDate getFechaAlta() {
         return fechaAlta;
     }
 
-    public void setFechaAlta(Date fechaAlta) {
+    public void setFechaAlta(LocalDate fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
 

@@ -9,6 +9,9 @@ public class Departamento {
     private String id;
 
     private ArrayList <Trabajador> listaTrabajadores = new ArrayList <Trabajador>();
+
+    public Departamento() {
+    }
     
     
     public Departamento(String nombre, String id) {
@@ -29,7 +32,21 @@ public class Departamento {
     public void setListaTrabajadores(ArrayList<Trabajador> listaTrabajadores) {
         this.listaTrabajadores = listaTrabajadores;
     }
-
+    
+    public void setTrabajador(Trabajador trabajador) {
+        this.listaTrabajadores.add(trabajador);
+    }
+    
+    public void deleteTrabajador(Trabajador trabajador) {
+        int i = -1;
+        for (i = 0; i < listaTrabajadores.size() && !listaTrabajadores.get(i).getN_emple().equals(trabajador.getN_emple()); i++) {}
+        if(i < listaTrabajadores.size()){
+            this.listaTrabajadores.remove(i);
+        }
+        
+    }
+    
+    
     public String getId() {
         return id;
     }
