@@ -19,7 +19,7 @@ public class BaseDatos {
             return null;
         }
     }
-    public void cerrar(){
+    public void cerrar(Connection con){
         try{
             con.close();
         }

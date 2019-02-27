@@ -5,6 +5,10 @@
  */
 package Vista;
 
+import Exception.*;
+import javax.swing.JOptionPane;
+import practica1_ejercicio1.Practica1_Ejercicio1;
+
 /**
  *
  * @author 1gdaw06
@@ -16,6 +20,8 @@ public class SelecOption extends javax.swing.JFrame {
      */
     public SelecOption() {
         initComponents();
+        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -54,6 +60,12 @@ public class SelecOption extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Opción elegida");
+
+        jtoption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtoptionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,6 +111,42 @@ public class SelecOption extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtoptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtoptionActionPerformed
+        try {
+            
+            if (jtoption.getText().isEmpty()) {
+                throw new OpcionVacia();
+            }
+            switch(Integer.parseInt(jtoption.getText())){
+                case 1:
+                    Practica1_Ejercicio1.goRegistro();
+                    break;
+                case 2:
+                    //añadir ventana preguntando nombre y luego otra mostrando sus datos
+                    JOptionPane.showMessageDialog(this,"opcion 2");
+                    break;
+                case 3:
+                    Practica1_Ejercicio1.goListaPersonas();
+                    break;
+                case 4:
+                    Practica1_Ejercicio1.cierreprograma();
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this,"valor numerico no valido.");
+            }
+        }
+        catch(OpcionVacia e){
+            JOptionPane.showMessageDialog(this,"Escoja una opcion.");
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this,"Solo puede poner valores numericos.");
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Algo fallo en las opciones.");
+        }
+        
+    }//GEN-LAST:event_jtoptionActionPerformed
 
     /**
      * @param args the command line arguments
