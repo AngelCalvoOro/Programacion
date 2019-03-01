@@ -20,7 +20,6 @@ public class SelecOption extends javax.swing.JFrame {
      */
     public SelecOption() {
         initComponents();
-        
         setLocationRelativeTo(null);
     }
 

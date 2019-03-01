@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Vista;
-
+import javax.swing.JOptionPane;
+import practica1_ejercicio1.Practica1_Ejercicio1;
+import Exception.*;
 /**
  *
  * @author Angel
@@ -16,9 +18,12 @@ public class VentanaPersona extends javax.swing.JFrame {
      */
     public VentanaPersona() {
         initComponents();
-        
         setLocationRelativeTo(null);
+        jbatras.setVisible(false);
+        jbadelante.setVisible(false);
+        jbsalir.setVisible(false);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,6 +47,7 @@ public class VentanaPersona extends javax.swing.JFrame {
         jbatras = new javax.swing.JButton();
         jbadelante = new javax.swing.JButton();
         jbsalir = new javax.swing.JButton();
+        jbcancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +63,11 @@ public class VentanaPersona extends javax.swing.JFrame {
         jLabel5.setText("Teléfono");
 
         jbaceptar.setText("Aceptar");
+        jbaceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbaceptarActionPerformed(evt);
+            }
+        });
 
         jbatras.setText("<");
         jbatras.setEnabled(false);
@@ -66,6 +77,13 @@ public class VentanaPersona extends javax.swing.JFrame {
 
         jbsalir.setText("Salir");
         jbsalir.setEnabled(false);
+
+        jbcancelar.setText("Cancelar");
+        jbcancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbcancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,22 +102,24 @@ public class VentanaPersona extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jbaceptar)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jtprofesion, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jbatras)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jbadelante)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jbsalir)))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtprofesion, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jbatras)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbadelante)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbsalir))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jbaceptar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jbcancelar))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -132,12 +152,46 @@ public class VentanaPersona extends javax.swing.JFrame {
                     .addComponent(jbadelante)
                     .addComponent(jbsalir))
                 .addGap(26, 26, 26)
-                .addComponent(jbaceptar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbaceptar)
+                    .addComponent(jbcancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public boolean validacion(){
+        try {
+            if (jtnombre.getText().isEmpty()) {
+                throw new RegistroVacioException(1);
+            }
+            if (jtedad.getText().isEmpty()) {
+                throw new RegistroVacioException(2);
+            }
+            if (jtprofesion.getText().isEmpty()) {
+                throw new RegistroVacioException(2);
+            }
+            if (jttelefono.getText().isEmpty()) {
+                throw new RegistroVacioException(2);
+            }
+            
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Problemas en validacion");
+            return false;
+        }
+    }
+    
+    private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
+        Practica1_Ejercicio1.volverSelector();
+    }//GEN-LAST:event_jbcancelarActionPerformed
+
+    private void jbaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbaceptarActionPerformed
+        if (validacion()) {
+            Practica1_Ejercicio1.registrarPersona(jtnombre.getText(), Integer.parseInt(jtedad.getText()),jtprofesion.getText(),jttelefono.getText());
+        }
+    }//GEN-LAST:event_jbaceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,6 +238,7 @@ public class VentanaPersona extends javax.swing.JFrame {
     private javax.swing.JButton jbaceptar;
     private javax.swing.JButton jbadelante;
     private javax.swing.JButton jbatras;
+    private javax.swing.JButton jbcancelar;
     private javax.swing.JButton jbsalir;
     private javax.swing.JTextField jtedad;
     private javax.swing.JTextField jtnombre;

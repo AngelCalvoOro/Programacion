@@ -8,13 +8,6 @@ public class Persona {
     private String profesion;
     private String telefono;
 
-    public Persona(String nombre, int edad, String profesion, String telefono) {
-        this.nombre = nombre;
-        this.edad = edad;
-        this.profesion = profesion;
-        this.telefono = telefono;
-    }
-
     public String getNombre() {
         return nombre;
     }
