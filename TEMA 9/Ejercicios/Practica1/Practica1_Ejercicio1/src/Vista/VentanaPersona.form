@@ -162,20 +162,26 @@
     <Component class="javax.swing.JButton" name="jbatras">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbatrasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbadelante">
       <Properties>
         <Property name="text" type="java.lang.String" value="&gt;"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbadelanteActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbsalir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbsalirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbcancelar">
       <Properties>

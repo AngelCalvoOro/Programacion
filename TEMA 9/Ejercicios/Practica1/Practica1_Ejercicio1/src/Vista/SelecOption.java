@@ -6,6 +6,8 @@
 package Vista;
 
 import Exception.*;
+import Modelo.Persona;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import practica1_ejercicio1.Practica1_Ejercicio1;
 
@@ -122,13 +124,11 @@ public class SelecOption extends javax.swing.JFrame {
                     Practica1_Ejercicio1.goRegistro();
                     break;
                 case 2:
-                    //añadir ventana preguntando nombre y luego otra mostrando sus datos
                     String nombreP =JOptionPane.showInputDialog("Indique el nombre de la persona a mostrar.");
                     existPerson(nombreP);
-                    
                     break;
                 case 3:
-                    Practica1_Ejercicio1.goListaPersonas();
+                    Practica1_Ejercicio1.getListaP();
                     break;
                 case 4:
                     Practica1_Ejercicio1.cierreprograma();
@@ -152,6 +152,10 @@ public class SelecOption extends javax.swing.JFrame {
     private void existPerson(String nombreP) throws Exception{
         if (nombreP.isEmpty()) {
             throw new RegistroVacioException(1);
+        }
+        else{
+            String message = Practica1_Ejercicio1.confirmexist(nombreP);
+            JOptionPane.showMessageDialog(this, message);
         }
     }
     /**

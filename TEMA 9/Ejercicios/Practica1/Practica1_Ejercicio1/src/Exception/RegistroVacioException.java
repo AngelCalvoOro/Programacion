@@ -20,8 +20,6 @@ public class RegistroVacioException extends Exception {
                 break;
             case 4: mensaje = "El teléfono es un campo obligatorio";
                 break;
-            case 5: mensaje = "Indica una opción";
-                break;
         }
         return mensaje;
     }

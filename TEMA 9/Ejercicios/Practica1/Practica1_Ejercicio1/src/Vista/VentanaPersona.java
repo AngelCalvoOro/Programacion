@@ -7,21 +7,35 @@ package Vista;
 import javax.swing.JOptionPane;
 import practica1_ejercicio1.Practica1_Ejercicio1;
 import Exception.*;
+import Modelo.Persona;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  *
  * @author Angel
  */
 public class VentanaPersona extends javax.swing.JFrame {
-
+    private static int i= 0;
+    private static ArrayList<Persona> lista= new ArrayList<Persona>();
     /**
      * Creates new form ventanaPersona
      */
+    
     public VentanaPersona() {
+        
+    }
+    
+    public VentanaPersona(boolean visualizarPersonas) {
         initComponents();
         setLocationRelativeTo(null);
-        jbatras.setVisible(false);
-        jbadelante.setVisible(false);
-        jbsalir.setVisible(false);
+        
+        jbaceptar.setVisible(!visualizarPersonas);
+        jbcancelar.setVisible(!visualizarPersonas);
+        
+        jbatras.setVisible(visualizarPersonas);
+        jbadelante.setVisible(visualizarPersonas);
+        jbsalir.setVisible(visualizarPersonas);
     }
     
 
@@ -70,13 +84,25 @@ public class VentanaPersona extends javax.swing.JFrame {
         });
 
         jbatras.setText("<");
-        jbatras.setEnabled(false);
+        jbatras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbatrasActionPerformed(evt);
+            }
+        });
 
         jbadelante.setText(">");
-        jbadelante.setEnabled(false);
+        jbadelante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbadelanteActionPerformed(evt);
+            }
+        });
 
         jbsalir.setText("Salir");
-        jbsalir.setEnabled(false);
+        jbsalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbsalirActionPerformed(evt);
+            }
+        });
 
         jbcancelar.setText("Cancelar");
         jbcancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -175,9 +201,28 @@ public class VentanaPersona extends javax.swing.JFrame {
             if (jttelefono.getText().isEmpty()) {
                 throw new RegistroVacioException(4);
             }
-            
+            Pattern formato = Pattern.compile("^[A-Z][a-z]*$");
+            Matcher seccion= formato.matcher(jtnombre.getText());
+            if (!seccion.matches()) {
+                throw new FormatoException(1);
+            }
+            formato = Pattern.compile("^[0-9]{1,2}$");
+            seccion = formato.matcher(jtedad.getText());
+            if (!seccion.matches()) {
+                throw new FormatoException(2);
+            }
+            formato= Pattern.compile("^[A-Z][a-z]*$");
+            seccion = formato.matcher(jtprofesion.getText());
+            if (!seccion.matches()) {
+                throw new FormatoException(3);
+            }
+            formato= Pattern.compile("^[0-9]{8}$");
+            seccion = formato.matcher(jttelefono.getText());
+            if (!seccion.matches()) {
+                throw new FormatoException(4);
+            }
             return true;
-        } catch(RegistroVacioException e){
+        } catch(RegistroVacioException|FormatoException e){
             JOptionPane.showMessageDialog(this,e.getMessage());
             return false;
         }
@@ -185,6 +230,19 @@ public class VentanaPersona extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Problemas en validacion");
             return false;
         }
+    }
+    
+    public void showPersonas(ArrayList<Persona> listaControlador){
+        if (listaControlador.size() == 0) {
+            JOptionPane.showMessageDialog(this, "No hay personas en la base de datos.");
+            Practica1_Ejercicio1.volverSelector();
+        }
+        else{
+            lista = listaControlador;
+            muestraPersona();
+        }
+        
+        
     }
     
     private void jbcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcancelarActionPerformed
@@ -202,6 +260,36 @@ public class VentanaPersona extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jbaceptarActionPerformed
+
+    private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
+        Practica1_Ejercicio1.volverSelector();
+    }//GEN-LAST:event_jbsalirActionPerformed
+
+    private void jbadelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbadelanteActionPerformed
+        if (i+1== lista.size()) {
+            jbadelante.setEnabled(false);
+            jbatras.setEnabled(true);
+        }
+        else{
+            i++;
+            jbadelante.setEnabled(true);
+        }
+        muestraPersona();
+        
+    }//GEN-LAST:event_jbadelanteActionPerformed
+
+    private void jbatrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbatrasActionPerformed
+        if (i== 0) {
+            jbatras.setEnabled(false);
+            jbadelante.setEnabled(true);
+        }
+        else{
+            i--;
+            jbatras.setEnabled(true);
+        }
+        muestraPersona();
+        
+    }//GEN-LAST:event_jbatrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,4 +343,11 @@ public class VentanaPersona extends javax.swing.JFrame {
     private javax.swing.JTextField jtprofesion;
     private javax.swing.JTextField jttelefono;
     // End of variables declaration//GEN-END:variables
+
+    private void muestraPersona() {
+        jtnombre.setText(lista.get(i).getNombre());
+        jtedad.setText(String.valueOf(lista.get(i).getEdad()));
+        jtprofesion.setText(lista.get(i).getProfesion());
+        jttelefono.setText(lista.get(i).getTelefono());
+    }
 }
