@@ -26,20 +26,17 @@ public class PersonaDAO {
         bd.cerrar(c);
     }
     
-    public static void darAlta(Persona p) throws SQLException{
+    public static void darAlta(Persona p) throws Exception{
         Connection c = conecta();
         
-        String plantilla = "INSERT INTO personas VALUES (?,?,?,?);";
-        PreparedStatement ps = con.prepareStatement(plantilla);
-        ps.setString(1, p.getPersona());
-        ps.setInt(2,p.getEdadPersona());
-        ps.setString(3, p.getProfesionPersona());
-        ps.setString(4,p.getTelefonoPersona());
-        int n = ps.executeUpdate();
+        String plantilla = "INSERT INTO persona VALUES (?,?,?,?);";
+        PreparedStatement ps = c.prepareStatement(plantilla);
+        ps.setString(1, p.getNombre());
+        ps.setInt(2,p.getEdad());
+        ps.setString(3, p.getProfesion());
+        ps.setString(4,p.getTelefono());
+        ps.executeUpdate();
         ps.close();
-        if (n != 1)
-        
-        
         
         desconecta(c);
     }

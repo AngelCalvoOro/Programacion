@@ -40,7 +40,7 @@ public class Practica1_Ejercicio1 {
         vP.setVisible(true);
     }
     
-    public static void registrarPersona(String rnombre, Integer redad, String rprofesion, String rtelefono) throws SQLException{
+    public static void registrarPersona(String rnombre, Integer redad, String rprofesion, String rtelefono) throws Exception{
         Persona nuevaPersona=new Persona();
         nuevaPersona.setNombre(rnombre);
         nuevaPersona.setEdad(redad);
@@ -49,8 +49,5 @@ public class Practica1_Ejercicio1 {
         
         pDAO.darAlta(nuevaPersona);
     }
-
-    public static void registrarPersona(String text, int parseInt, String text0, String text1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }

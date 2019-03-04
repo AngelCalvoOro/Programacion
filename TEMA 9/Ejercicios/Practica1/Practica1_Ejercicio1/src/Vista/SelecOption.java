@@ -123,7 +123,9 @@ public class SelecOption extends javax.swing.JFrame {
                     break;
                 case 2:
                     //añadir ventana preguntando nombre y luego otra mostrando sus datos
-                    JOptionPane.showMessageDialog(this,"opcion 2");
+                    String nombreP =JOptionPane.showInputDialog("Indique el nombre de la persona a mostrar.");
+                    existPerson(nombreP);
+                    
                     break;
                 case 3:
                     Practica1_Ejercicio1.goListaPersonas();
@@ -146,7 +148,12 @@ public class SelecOption extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jtoptionActionPerformed
-
+    
+    private void existPerson(String nombreP) throws Exception{
+        if (nombreP.isEmpty()) {
+            throw new RegistroVacioException(1);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -191,4 +198,6 @@ public class SelecOption extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField jtoption;
     // End of variables declaration//GEN-END:variables
+
+    
 }

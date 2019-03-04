@@ -170,14 +170,18 @@ public class VentanaPersona extends javax.swing.JFrame {
                 throw new RegistroVacioException(2);
             }
             if (jtprofesion.getText().isEmpty()) {
-                throw new RegistroVacioException(2);
+                throw new RegistroVacioException(3);
             }
             if (jttelefono.getText().isEmpty()) {
-                throw new RegistroVacioException(2);
+                throw new RegistroVacioException(4);
             }
             
             return true;
-        } catch (Exception e) {
+        } catch(RegistroVacioException e){
+            JOptionPane.showMessageDialog(this,e.getMessage());
+            return false;
+        }
+            catch (Exception e) {
             JOptionPane.showMessageDialog(this,"Problemas en validacion");
             return false;
         }
@@ -188,9 +192,15 @@ public class VentanaPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_jbcancelarActionPerformed
 
     private void jbaceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbaceptarActionPerformed
-        if (validacion()) {
-            Practica1_Ejercicio1.registrarPersona(jtnombre.getText(), Integer.parseInt(jtedad.getText()),jtprofesion.getText(),jttelefono.getText());
+        try {
+            if (validacion()) {
+                Practica1_Ejercicio1.registrarPersona(jtnombre.getText(), Integer.parseInt(jtedad.getText()),jtprofesion.getText(),jttelefono.getText());
+                JOptionPane.showMessageDialog(this,"Persona "+ jtnombre.getText() +" correctamente añadida.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"fallo en algo de la adicion de persona.");
         }
+        
     }//GEN-LAST:event_jbaceptarActionPerformed
 
     /**
