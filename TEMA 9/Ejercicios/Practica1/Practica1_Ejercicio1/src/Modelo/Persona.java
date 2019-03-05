@@ -8,6 +8,7 @@ public class Persona {
     private String profesion;
     private String telefono;
 
+
     public String getNombre() {
         return nombre;
     }

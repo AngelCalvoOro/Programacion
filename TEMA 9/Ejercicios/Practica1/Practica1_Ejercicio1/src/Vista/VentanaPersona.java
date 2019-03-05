@@ -84,6 +84,7 @@ public class VentanaPersona extends javax.swing.JFrame {
         });
 
         jbatras.setText("<");
+        jbatras.setEnabled(false);
         jbatras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbatrasActionPerformed(evt);
@@ -201,7 +202,7 @@ public class VentanaPersona extends javax.swing.JFrame {
             if (jttelefono.getText().isEmpty()) {
                 throw new RegistroVacioException(4);
             }
-            Pattern formato = Pattern.compile("^[A-Z][a-z]*$");
+            Pattern formato = Pattern.compile("[A-Z][a-z]*$");
             Matcher seccion= formato.matcher(jtnombre.getText());
             if (!seccion.matches()) {
                 throw new FormatoException(1);
@@ -211,7 +212,7 @@ public class VentanaPersona extends javax.swing.JFrame {
             if (!seccion.matches()) {
                 throw new FormatoException(2);
             }
-            formato= Pattern.compile("^[A-Z][a-z]*$");
+            formato= Pattern.compile("[A-Z][a-z]*$");
             seccion = formato.matcher(jtprofesion.getText());
             if (!seccion.matches()) {
                 throw new FormatoException(3);
@@ -262,6 +263,7 @@ public class VentanaPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_jbaceptarActionPerformed
 
     private void jbsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsalirActionPerformed
+        i=0;
         Practica1_Ejercicio1.volverSelector();
     }//GEN-LAST:event_jbsalirActionPerformed
 
