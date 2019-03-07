@@ -9,12 +9,12 @@
             <Property name="text" type="java.lang.String" value="Opciones"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiaddevento">
+            <MenuItem class="javax.swing.JMenuItem" name="jmianadirevento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="a&#xf1;adir evento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiaddeventoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmianadireventoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -23,6 +23,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmsalirMouseClicked"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>

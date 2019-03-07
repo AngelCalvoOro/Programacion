@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vista;
 
-/**
- *
- * @author 1gdaw06
- */
+import Controlador.Control;
+
+
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     /**
@@ -30,7 +25,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jmiaddevento = new javax.swing.JMenuItem();
+        jmianadirevento = new javax.swing.JMenuItem();
         jmsalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -40,17 +35,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Opciones");
 
-        jmiaddevento.setText("añadir evento");
-        jmiaddevento.addActionListener(new java.awt.event.ActionListener() {
+        jmianadirevento.setText("añadir evento");
+        jmianadirevento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiaddeventoActionPerformed(evt);
+                jmianadireventoActionPerformed(evt);
             }
         });
-        jMenu1.add(jmiaddevento);
+        jMenu1.add(jmianadirevento);
 
         jMenuBar1.add(jMenu1);
 
         jmsalir.setText("Salir");
+        jmsalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmsalirMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jmsalir);
 
         setJMenuBar(jMenuBar1);
@@ -75,9 +75,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmiaddeventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiaddeventoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmiaddeventoActionPerformed
+    private void jmianadireventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmianadireventoActionPerformed
+        Control.ventanaAnadir();
+    }//GEN-LAST:event_jmianadireventoActionPerformed
+
+    private void jmsalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmsalirMouseClicked
+        Control.finPrograma();
+    }//GEN-LAST:event_jmsalirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -118,7 +122,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jmiaddevento;
+    private javax.swing.JMenuItem jmianadirevento;
     private javax.swing.JMenu jmsalir;
     // End of variables declaration//GEN-END:variables
 }

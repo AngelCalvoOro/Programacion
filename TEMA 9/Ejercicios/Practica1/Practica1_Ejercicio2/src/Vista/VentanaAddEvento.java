@@ -5,6 +5,13 @@
  */
 package Vista;
 
+import Controlador.Control;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 1gdaw06
@@ -35,8 +42,13 @@ public class VentanaAddEvento extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jtnombre = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jcblugar = new javax.swing.JComboBox<>();
+        jtMaxPersona = new javax.swing.JTextField();
+        jcblugar = new javax.swing.JComboBox<String>();
+        jdFecha = new com.toedter.calendar.JDateChooser();
+        tHoraInicio = new com.github.lgooddatepicker.components.TimePicker();
+        tHoraFinal = new com.github.lgooddatepicker.components.TimePicker();
+        jbAceptar = new javax.swing.JButton();
+        jbCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,9 +66,25 @@ public class VentanaAddEvento extends javax.swing.JFrame {
 
         jLabel7.setText("Maximo Personas:");
 
+        jcblugar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vitoria", "Bilbao", "Donosti" }));
+        jcblugar.setSelectedIndex(-1);
         jcblugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcblugarActionPerformed(evt);
+            }
+        });
+
+        jbAceptar.setText("Aceptar");
+        jbAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAceptarActionPerformed(evt);
+            }
+        });
+
+        jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
             }
         });
 
@@ -72,15 +100,18 @@ public class VentanaAddEvento extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
-                                .addGap(90, 90, 90)
-                                .addComponent(jLabel6))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,8 +120,18 @@ public class VentanaAddEvento extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jtnombre)
-                            .addComponent(jcblugar, 0, 108, Short.MAX_VALUE))))
-                .addContainerGap(171, Short.MAX_VALUE))
+                            .addComponent(jcblugar, 0, 108, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtMaxPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jbAceptar)
+                        .addGap(86, 86, 86)
+                        .addComponent(jbCancelar)))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,16 +147,24 @@ public class VentanaAddEvento extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jcblugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(33, 33, 33)
+                    .addComponent(jLabel6)
+                    .addComponent(tHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tHoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                    .addComponent(jtMaxPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbAceptar)
+                    .addComponent(jbCancelar))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -124,6 +173,24 @@ public class VentanaAddEvento extends javax.swing.JFrame {
     private void jcblugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcblugarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcblugarActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        Control.returnToPrincipal();
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
+        String nombre= jtnombre.getText();
+        String lugar= jcblugar.getItemAt(jcblugar.getSelectedIndex());
+        
+        Date fechaD= jdFecha.getDate();
+        LocalDate fecha = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        LocalTime horaI =tHoraInicio.getTime();
+        LocalTime horaF =tHoraFinal.getTime();
+        int maxPersona = Integer.parseInt(jtMaxPersona.getText());
+        Control.addEvento(nombre,lugar,fecha,horaI,horaF,maxPersona);
+        JOptionPane.showMessageDialog(this, "evento añadido a la base.");
+    }//GEN-LAST:event_jbAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,8 +235,13 @@ public class VentanaAddEvento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton jbAceptar;
+    private javax.swing.JButton jbCancelar;
     private javax.swing.JComboBox<String> jcblugar;
+    private com.toedter.calendar.JDateChooser jdFecha;
+    private javax.swing.JTextField jtMaxPersona;
     private javax.swing.JTextField jtnombre;
+    private com.github.lgooddatepicker.components.TimePicker tHoraFinal;
+    private com.github.lgooddatepicker.components.TimePicker tHoraInicio;
     // End of variables declaration//GEN-END:variables
 }

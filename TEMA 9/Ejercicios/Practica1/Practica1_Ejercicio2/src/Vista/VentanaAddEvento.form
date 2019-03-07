@@ -32,16 +32,19 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jdFecha" min="-2" pref="106" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextField3" min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tHoraInicio" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tHoraFinal" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -57,8 +60,20 @@
                           <Component id="jcblugar" pref="108" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jtMaxPersona" min="-2" pref="62" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="jbAceptar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                      <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="171" max="32767" attributes="0"/>
+              <EmptySpace pref="91" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -78,18 +93,28 @@
                   <Component id="jcblugar" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <Component id="jdFecha" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tHoraInicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tHoraFinal" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtMaxPersona" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="92" max="32767" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jbAceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -132,13 +157,18 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jtnombre">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField3">
+    <Component class="javax.swing.JTextField" name="jtMaxPersona">
     </Component>
     <Component class="javax.swing.JComboBox" name="jcblugar">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="3">
+            <StringItem index="0" value="Vitoria"/>
+            <StringItem index="1" value="Bilbao"/>
+            <StringItem index="2" value="Donosti"/>
+          </StringArray>
         </Property>
+        <Property name="selectedIndex" type="int" value="-1"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcblugarActionPerformed"/>
@@ -146,6 +176,28 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="jdFecha">
+    </Component>
+    <Component class="com.github.lgooddatepicker.components.TimePicker" name="tHoraInicio">
+    </Component>
+    <Component class="com.github.lgooddatepicker.components.TimePicker" name="tHoraFinal">
+    </Component>
+    <Component class="javax.swing.JButton" name="jbAceptar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aceptar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAceptarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbCancelar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -268,12 +268,13 @@ public class VentanaPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_jbsalirActionPerformed
 
     private void jbadelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbadelanteActionPerformed
-        if (i+1== lista.size()) {
+        i=i+1;
+        if (i== lista.size()-1) {
             jbadelante.setEnabled(false);
             jbatras.setEnabled(true);
         }
         else{
-            i++;
+            
             jbadelante.setEnabled(true);
         }
         muestraPersona();
@@ -281,12 +282,12 @@ public class VentanaPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_jbadelanteActionPerformed
 
     private void jbatrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbatrasActionPerformed
+        i=i-1;
         if (i== 0) {
             jbatras.setEnabled(false);
             jbadelante.setEnabled(true);
         }
         else{
-            i--;
             jbatras.setEnabled(true);
         }
         muestraPersona();

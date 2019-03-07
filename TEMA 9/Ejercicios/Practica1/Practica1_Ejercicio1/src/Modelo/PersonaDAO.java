@@ -7,8 +7,7 @@ import java.util.ArrayList;
 
 
 public class PersonaDAO {
-    private static Connection con;
-        
+    
     private static Connection conecta(){
         Connection con;
         BaseDatos bd=new BaseDatos();

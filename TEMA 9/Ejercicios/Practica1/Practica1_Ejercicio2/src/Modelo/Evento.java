@@ -11,6 +11,15 @@ public class Evento {
     private LocalDate fecha;
     private LocalTime hInicio;
     private LocalTime hFinal;
+    private int maxPersona;
+
+    public int getMaxPersona() {
+        return maxPersona;
+    }
+
+    public void setMaxPersona(int maxPersona) {
+        this.maxPersona = maxPersona;
+    }
 
     public String getNombre() {
         return nombre;
