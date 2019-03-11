@@ -6,10 +6,14 @@
 package Vista;
 
 import Controlador.Control;
+import Exception.EventoVacionException;
+import Exception.FormatoErroneoException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +27,7 @@ public class VentanaAddEvento extends javax.swing.JFrame {
      */
     public VentanaAddEvento() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -170,6 +175,53 @@ public class VentanaAddEvento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean validacion(){
+        try {
+            if (jtnombre.getText().isEmpty()) {
+            throw new EventoVacionException(1);
+            }
+            if (jcblugar.getItemAt(jcblugar.getSelectedIndex()).isEmpty()) {
+                throw new EventoVacionException(2);
+                //problema con validacion lugar
+            }
+            //falta el empty de fecha
+            /*if (jdFecha.getDate().) {
+                
+            }*/
+            if (tHoraInicio.getText().isEmpty()) {
+                throw new EventoVacionException(4);
+            }
+            if (tHoraFinal.getText().isEmpty()) {
+                throw new EventoVacionException(5);
+            }
+            if (jtMaxPersona.getText().isEmpty()) {
+                throw new EventoVacionException(6);
+            }
+            Pattern formato= Pattern.compile("[A-Z][a-z][0-9]*$");
+            Matcher seccion= formato.matcher(jtnombre.getText());
+            if (!seccion.matches()) {
+                throw new FormatoErroneoException(1);
+            }
+            formato = Pattern.compile("[0-9]{1,2,3}$");
+            seccion = formato.matcher(jtMaxPersona.getText());
+            if (!seccion.matches()) {
+                throw new FormatoErroneoException(2);
+            }
+            //arreglar comprobacion de hora para que no sea igual o menor que hora inicio
+            /*if (tHoraInicio.getText() tHoraFinal.getText()) {
+                
+            }*/
+            return true;
+        }catch(EventoVacionException|FormatoErroneoException e){
+            JOptionPane.showMessageDialog(this,e.getMessage());
+            return false;
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Problemas en validacion");
+            return false;
+        }
+    }
+    
     private void jcblugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcblugarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcblugarActionPerformed
@@ -179,17 +231,23 @@ public class VentanaAddEvento extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCancelarActionPerformed
 
     private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
-        String nombre= jtnombre.getText();
-        String lugar= jcblugar.getItemAt(jcblugar.getSelectedIndex());
-        
-        Date fechaD= jdFecha.getDate();
-        LocalDate fecha = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
-        LocalTime horaI =tHoraInicio.getTime();
-        LocalTime horaF =tHoraFinal.getTime();
-        int maxPersona = Integer.parseInt(jtMaxPersona.getText());
-        Control.addEvento(nombre,lugar,fecha,horaI,horaF,maxPersona);
-        JOptionPane.showMessageDialog(this, "evento añadido a la base.");
+        try {
+            if (validacion()) {
+                String nombre= jtnombre.getText();
+                String lugar= jcblugar.getItemAt(jcblugar.getSelectedIndex());
+
+                Date fechaD= jdFecha.getDate();
+                LocalDate fecha = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                LocalTime horaI =tHoraInicio.getTime();
+                LocalTime horaF =tHoraFinal.getTime();
+                int maxPersona = Integer.parseInt(jtMaxPersona.getText());
+                Control.addEvento(nombre,lugar,fecha,horaI,horaF,maxPersona);
+                JOptionPane.showMessageDialog(this, "evento añadido a la base.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"fallo en algo de la adicion de persona.");
+        }
     }//GEN-LAST:event_jbAceptarActionPerformed
 
     /**

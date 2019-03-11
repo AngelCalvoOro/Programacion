@@ -1,14 +1,18 @@
-//AÑADIR PLUGIN  
 package Controlador;
 
 import Modelo.*;
 import Vista.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+/**
+ * 
+ * @author angel
+ * @version 1
+ * 
+ */
 
 public class Control {
-    private static VentanaAddEvento vAdd;
+    private static VentanaAddEvento vAdd; 
     private static VentanaPrincipal vP;
     private static EventoDAO eDAO;
     
