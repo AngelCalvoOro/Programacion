@@ -48,7 +48,7 @@ public class VentanaAddEvento extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jtnombre = new javax.swing.JTextField();
         jtMaxPersona = new javax.swing.JTextField();
-        jcblugar = new javax.swing.JComboBox<String>();
+        jcblugar = new javax.swing.JComboBox<>();
         jdFecha = new com.toedter.calendar.JDateChooser();
         tHoraInicio = new com.github.lgooddatepicker.components.TimePicker();
         tHoraFinal = new com.github.lgooddatepicker.components.TimePicker();
@@ -71,7 +71,7 @@ public class VentanaAddEvento extends javax.swing.JFrame {
 
         jLabel7.setText("Maximo Personas:");
 
-        jcblugar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vitoria", "Bilbao", "Donosti" }));
+        jcblugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vitoria", "Bilbao", "Donosti" }));
         jcblugar.setSelectedIndex(-1);
 
         jbAceptar.setText("Aceptar");

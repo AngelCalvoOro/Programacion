@@ -90,7 +90,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
 
         pack();
@@ -115,6 +115,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Evento no encontrado.");
         }
         else{
+            JOptionPane.showMessageDialog(this, "Evento encontrado.");
+            Control.LoadEvent(nombreM);            
             //añadir a ventana addevento los datos y guardar la modificacion
         }
     }//GEN-LAST:event_jmimodificarActionPerformed

@@ -57,6 +57,7 @@ public class VentanaEliminar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jtalistaevento.setColumns(20);
+        jtalistaevento.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
         jtalistaevento.setRows(5);
         jtalistaevento.setEnabled(false);
         jScrollPane1.setViewportView(jtalistaevento);

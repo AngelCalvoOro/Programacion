@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-03-2019 a las 23:05:11
+-- Tiempo de generación: 12-03-2019 a las 09:55:50
 -- Versión del servidor: 5.6.13
 -- Versión de PHP: 5.4.17
 
@@ -29,7 +29,7 @@ USE `bsevento`;
 --
 
 CREATE TABLE IF NOT EXISTS `evento` (
-  `nombre` varchar(15) NOT NULL DEFAULT '',
+  `nombre` varchar(15) NOT NULL,
   `lugar` varchar(15) NOT NULL,
   `fecha` date NOT NULL,
   `hInicio` time NOT NULL,
@@ -42,6 +42,8 @@ CREATE TABLE IF NOT EXISTS `evento` (
 --
 
 INSERT INTO `evento` (`nombre`, `lugar`, `fecha`, `hInicio`, `hFinal`, `maxPersona`) VALUES
+('evento1', 'Vitoria', '2019-03-08', '00:00:00', '00:30:00', 54),
+('evento2', 'Bilbao', '2019-03-29', '02:30:00', '04:30:00', 7),
 ('prueba1', 'Vitoria', '2019-03-20', '00:00:00', '01:00:00', 21),
 ('prueba2', 'Bilbao', '2019-03-29', '02:30:00', '04:30:00', 555),
 ('prueba3', 'Donosti', '2019-03-31', '05:30:00', '09:00:00', 10);
