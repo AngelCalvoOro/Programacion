@@ -125,7 +125,7 @@ public class EventoDAO {
 
     public Evento takeEvento(Evento takeEvento) {
         Connection c = conectar();
-        Evento e=null;
+        Evento eObtenido=null;
         try {
             String getE= "SELECT * FROM evento  where UPPER(NOMBRE)= ?";
             PreparedStatement ae= c.prepareStatement(getE);
@@ -133,17 +133,17 @@ public class EventoDAO {
             ResultSet rs =ae.executeQuery();
             
             if (rs.next()) {
-                e = new Evento();
-                e.setNombre(rs.getString("nombre"));
-                e.setLugar(rs.getString("lugar"));
-                e.setMaxPersona(rs.getInt("maxPersona"));
+                eObtenido = new Evento();
+                eObtenido.setNombre(rs.getString("nombre"));
+                eObtenido.setLugar(rs.getString("lugar"));
+                eObtenido.setMaxPersona(rs.getInt("maxPersona"));
                 
                 java.util.Date fechaD= rs.getDate("fecha");
                 LocalDate fecha = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                e.setFecha(fecha);
+                eObtenido.setFecha(fecha);
                 
-                e.sethInicio(rs.getTime("hInicio").toLocalTime());
-                e.sethFinal(rs.getTime("hFinal").toLocalTime());
+                eObtenido.sethInicio(rs.getTime("hInicio").toLocalTime());
+                eObtenido.sethFinal(rs.getTime("hFinal").toLocalTime());
             }
             ae.close();
         } catch (Exception a) {
@@ -151,7 +151,7 @@ public class EventoDAO {
         }finally{
             desconectar(c);
         }
-        return e;
+        return eObtenido;
     }
     
     

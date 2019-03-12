@@ -27,7 +27,6 @@ public class Control {
         vP.dispose();
         vAdd =new VentanaAddEvento();
         vAdd.setVisible(true);
-        
     }
     public static void ventanaEliminar() {
         ArrayList<Evento> listaEventos=getListaEventos();
@@ -82,6 +81,12 @@ public class Control {
         Evento takeEvento=new Evento();
         takeEvento.setNombre(nombreM);
         Evento  eObtenido= eDAO.takeEvento(takeEvento);
+        ventanaModificar(eObtenido);
+    }
+    public static void ventanaModificar(Evento eObtenido) {
+        vP.dispose();
+        vAdd =new VentanaAddEvento();
+        vAdd.setVisible(true);
     }
     
     
