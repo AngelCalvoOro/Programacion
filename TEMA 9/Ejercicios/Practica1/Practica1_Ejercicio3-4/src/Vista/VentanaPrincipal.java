@@ -116,8 +116,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         else{
             JOptionPane.showMessageDialog(this, "Evento encontrado.");
-            Control.LoadEvent(nombreM);            
-            //añadir a ventana addevento los datos y guardar la modificacion
+            Control.ventanaModificar(encontrado);
         }
     }//GEN-LAST:event_jmimodificarActionPerformed
 

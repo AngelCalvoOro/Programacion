@@ -121,38 +121,4 @@ public class EventoDAO {
         }
         return e;
     }
-    
-
-    public Evento takeEvento(Evento takeEvento) {
-        Connection c = conectar();
-        Evento eObtenido=null;
-        try {
-            String getE= "SELECT * FROM evento  where UPPER(NOMBRE)= ?";
-            PreparedStatement ae= c.prepareStatement(getE);
-            ae.setString(1, takeEvento.getNombre().toUpperCase());
-            ResultSet rs =ae.executeQuery();
-            
-            if (rs.next()) {
-                eObtenido = new Evento();
-                eObtenido.setNombre(rs.getString("nombre"));
-                eObtenido.setLugar(rs.getString("lugar"));
-                eObtenido.setMaxPersona(rs.getInt("maxPersona"));
-                
-                java.util.Date fechaD= rs.getDate("fecha");
-                LocalDate fecha = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                eObtenido.setFecha(fecha);
-                
-                eObtenido.sethInicio(rs.getTime("hInicio").toLocalTime());
-                eObtenido.sethFinal(rs.getTime("hFinal").toLocalTime());
-            }
-            ae.close();
-        } catch (Exception a) {
-            System.out.println(a.getMessage());
-        }finally{
-            desconectar(c);
-        }
-        return eObtenido;
-    }
-    
-    
 }

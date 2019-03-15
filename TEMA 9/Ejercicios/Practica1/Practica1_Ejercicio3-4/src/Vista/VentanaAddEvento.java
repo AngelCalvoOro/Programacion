@@ -8,6 +8,7 @@ package Vista;
 import Controlador.Control;
 import Exception.EventoVacionException;
 import Exception.FormatoErroneoException;
+import Modelo.Evento;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -29,6 +30,26 @@ public class VentanaAddEvento extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
+    public VentanaAddEvento(Evento encontrado) {
+        initComponents();
+        setLocationRelativeTo(null);
+        addmodificacion(encontrado);
+    }
+
+    private void addmodificacion(Evento encontrado){
+        jtnombre.setText(encontrado.getNombre());
+        jcblugar.setSelectedItem(encontrado.getLugar());
+        tHoraInicio.setTime(encontrado.gethInicio());
+        tHoraFinal.setTime(encontrado.gethFinal());
+        
+        LocalDate fechaM = encontrado.getFecha();
+        Date fecha = Date.from(fechaM.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        jdFecha.setDate(fecha);
+        
+        
+        
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -291,4 +312,6 @@ public class VentanaAddEvento extends javax.swing.JFrame {
     private com.github.lgooddatepicker.components.TimePicker tHoraFinal;
     private com.github.lgooddatepicker.components.TimePicker tHoraInicio;
     // End of variables declaration//GEN-END:variables
+
+    
 }

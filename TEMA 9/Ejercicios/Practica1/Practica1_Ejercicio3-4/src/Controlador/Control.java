@@ -76,18 +76,15 @@ public class Control {
         Evento eRecibido = eDAO.getEvento(eUpdate);
         return eRecibido;
     }
-
-    public static void LoadEvent(String nombreM) {
-        Evento takeEvento=new Evento();
-        takeEvento.setNombre(nombreM);
-        Evento  eObtenido= eDAO.takeEvento(takeEvento);
-        ventanaModificar(eObtenido);
-    }
-    public static void ventanaModificar(Evento eObtenido) {
+    public static void ventanaModificar(Evento encontrado) {
         vP.dispose();
-        vAdd =new VentanaAddEvento();
+        vAdd =new VentanaAddEvento(encontrado);
         vAdd.setVisible(true);
     }
+
+    
+
+    
     
     
     
