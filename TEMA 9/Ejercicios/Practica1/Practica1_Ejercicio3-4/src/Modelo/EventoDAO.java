@@ -105,10 +105,8 @@ public class EventoDAO {
                 e.setNombre(rs.getString("nombre"));
                 e.setLugar(rs.getString("lugar"));
                 e.setMaxPersona(rs.getInt("maxPersona"));
-                
-                java.util.Date fechaD= rs.getDate("fecha");
-                LocalDate fecha = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                e.setFecha(fecha);
+
+                e.setFecha(rs.getDate("fecha").toLocalDate());
                 
                 e.sethInicio(rs.getTime("hInicio").toLocalTime());
                 e.sethFinal(rs.getTime("hFinal").toLocalTime());
@@ -120,5 +118,32 @@ public class EventoDAO {
             desconectar(c);
         }
         return e;
+    }
+
+    public void addChangeEvento(Evento e) {
+         Connection c = conectar();
+        try {
+            String chageE= "UPDATE evento set lugar = ?, fecha = ?, hInicio = ?, hFinal = ?, maxPersona = ? where nombre = ?,";
+            PreparedStatement ae= c.prepareStatement(chageE);
+            ae.setString(6,e.getNombre());
+            ae.setString(1,e.getLugar());
+            
+            Date fechad= java.sql.Date.valueOf(e.getFecha());
+            ae.setDate(2, fechad);
+            
+            Time hIniciod= Time.valueOf(e.gethInicio());
+            ae.setTime(3, hIniciod);
+            
+            Time hFinald= Time.valueOf(e.gethFinal());
+            ae.setTime(4, hFinald);
+            
+            ae.setInt(5, e.getMaxPersona());
+            ae.executeUpdate();
+            ae.close();
+        } catch (Exception a) {
+            System.out.println(a.getMessage());
+        }finally{
+            desconectar(c);
+        }
     }
 }

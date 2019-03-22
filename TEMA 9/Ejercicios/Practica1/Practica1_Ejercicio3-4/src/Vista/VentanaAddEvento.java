@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  * @author 1gdaw06
  */
 public class VentanaAddEvento extends javax.swing.JFrame {
-
+    private boolean modificacion=false;
     /**
      * Creates new form VentanaAddEvento
      */
@@ -37,6 +37,8 @@ public class VentanaAddEvento extends javax.swing.JFrame {
     }
 
     private void addmodificacion(Evento encontrado){
+        modificacion=true;
+        
         jtnombre.setText(encontrado.getNombre());
         jcblugar.setSelectedItem(encontrado.getLugar());
         tHoraInicio.setTime(encontrado.gethInicio());
@@ -45,7 +47,12 @@ public class VentanaAddEvento extends javax.swing.JFrame {
         LocalDate fechaM = encontrado.getFecha();
         Date fecha = Date.from(fechaM.atStartOfDay(ZoneId.systemDefault()).toInstant());
         jdFecha.setDate(fecha);
+       
         
+        int maxPersonaM = encontrado.getMaxPersona();
+        String maxPersona = String.valueOf(maxPersonaM);
+        jtMaxPersona.setText(maxPersona);
+        jtnombre.setEnabled(false);
         
         
     }
@@ -242,21 +249,36 @@ public class VentanaAddEvento extends javax.swing.JFrame {
 
     private void jbAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAceptarActionPerformed
         try {
-            if (validacion()) {
-                String nombre= jtnombre.getText();
-                String lugar= jcblugar.getItemAt(jcblugar.getSelectedIndex());
+            if (modificacion==false) {
+                if (validacion()) {
+                    String nombre= jtnombre.getText();
+                    String lugar= jcblugar.getItemAt(jcblugar.getSelectedIndex());
 
-                Date fechaD= jdFecha.getDate();
-                LocalDate fecha = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    Date fechaD= jdFecha.getDate();
+                    LocalDate fecha = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-                LocalTime horaI =tHoraInicio.getTime();
-                LocalTime horaF =tHoraFinal.getTime();
-                int maxPersona = Integer.parseInt(jtMaxPersona.getText());
-                Control.addEvento(nombre,lugar,fecha,horaI,horaF,maxPersona);
-                JOptionPane.showMessageDialog(this, "evento añadido a la base.");
+                    LocalTime horaI =tHoraInicio.getTime();
+                    LocalTime horaF =tHoraFinal.getTime();
+                    int maxPersona = Integer.parseInt(jtMaxPersona.getText());
+                    Control.addEvento(nombre,lugar,fecha,horaI,horaF,maxPersona);
+                    JOptionPane.showMessageDialog(this, "evento añadido a la base.");
+                }
             }
+            else{
+                String nombre= jtnombre.getText();
+                    String lugar= jcblugar.getItemAt(jcblugar.getSelectedIndex());
+
+                    Date fechaD= jdFecha.getDate();
+                    LocalDate fecha = fechaD.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+                    LocalTime horaI =tHoraInicio.getTime();
+                    LocalTime horaF =tHoraFinal.getTime();
+                    int maxPersona = Integer.parseInt(jtMaxPersona.getText());
+                    Control.addChangeEvento(nombre,lugar,fecha,horaI,horaF,maxPersona);
+                    JOptionPane.showMessageDialog(this, "evento modificado.");
+            } 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"fallo en algo de la adicion de persona.");
+            JOptionPane.showMessageDialog(this,"fallo en algo de la adicion de persona." + e.getLocalizedMessage());
         }
     }//GEN-LAST:event_jbAceptarActionPerformed
 

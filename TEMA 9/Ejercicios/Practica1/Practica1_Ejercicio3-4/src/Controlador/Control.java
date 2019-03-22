@@ -82,6 +82,17 @@ public class Control {
         vAdd.setVisible(true);
     }
 
+    public static void addChangeEvento(String nombre, String lugar, LocalDate fecha, LocalTime horaI, LocalTime horaF, int maxPersona) {
+        Evento e =new Evento();
+        e.setNombre(nombre);
+        e.setLugar(lugar);
+        e.setFecha(fecha);
+        e.sethInicio(horaI);
+        e.sethFinal(horaF);
+        e.setMaxPersona(maxPersona);
+        eDAO.addChangeEvento(e);
+    }
+
     
 
     
