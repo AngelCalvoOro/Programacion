@@ -120,10 +120,10 @@ public class EventoDAO {
         return e;
     }
 
-    public void addChangeEvento(Evento e) {
+    public static void addChangeEvento(Evento e) {
          Connection c = conectar();
         try {
-            String chageE= "UPDATE evento set lugar = ?, fecha = ?, hInicio = ?, hFinal = ?, maxPersona = ? where nombre = ?,";
+            String chageE= "UPDATE evento set lugar = ?, fecha = ?, hInicio = ?, hFinal = ?, maxPersona = ? where nombre = ?";
             PreparedStatement ae= c.prepareStatement(chageE);
             ae.setString(6,e.getNombre());
             ae.setString(1,e.getLugar());
@@ -137,7 +137,7 @@ public class EventoDAO {
             Time hFinald= Time.valueOf(e.gethFinal());
             ae.setTime(4, hFinald);
             
-            ae.setInt(5, e.getMaxPersona());
+            ae.setInt(5, e.getMaxPersona());ae.setString(6,e.getNombre());
             ae.executeUpdate();
             ae.close();
         } catch (Exception a) {
